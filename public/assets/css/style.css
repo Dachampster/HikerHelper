@@ -21,15 +21,11 @@ right: 3%;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    /* margin-top: -50%;
-    margin-left: -50%; */
+    transform: translate(-50%, 20%);
     z-index: 99;
 }
 
 .formSearch{
-    /* width: 30% !important;  */
-    /* position: absolute; */
     margin-left:15% !important;
     margin-top: 10% !important;
 }
