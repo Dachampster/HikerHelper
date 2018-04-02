@@ -3,13 +3,27 @@
     margin:1%;
 }
 
-#mainNavBar{
-    background-color: rgb(233, 110, 9);
+.mainNavBar,
+#footer{
+    height: 7vh;
 }
 
 #singInLink{
 position: absolute;
 right: 3%;
+}
+
+.search{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -100px;
+    z-index: 99;
+}
+
+.imagesCarousel{
+   height: 86vh;
 }
 
 #footer{
