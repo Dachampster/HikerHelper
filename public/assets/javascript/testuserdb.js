@@ -33,5 +33,12 @@ $(document).ready(function(){
     };
     addUser(newUser);
   });
-  
+
+  $("#get").on("submit", function(event){
+    event.preventDefault();
+    var userId = parseFloat($("#user-id").val());
+    $.get("/api/users/" + userId, function(data){
+      console.log(data);
+    });
+  });
 });

@@ -2,13 +2,14 @@ var db = require("../models");
 
 module.exports = function(app) {
 
-  app.post("/api/search", function(req, res) {
-    db.SearchParam.create({
+  app.post("/api/activity", function(req, res) {
+    db.Activity.create({
       name: req.body.name,
-      activityIdentification: req.body.activityIdentification,
+      activityNum: req.body.activityNum,
       difficulty: req.body.difficulty,
       length: req.body.length,
-      rating: req.body.rating
+      rating: req.body.rating,
+      SearchParamId: req.body.SearchParamId
     }).then(function(dbActivity) {
       res.json(dbActivity);
     });

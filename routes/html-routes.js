@@ -15,4 +15,12 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/testuserdb.html"));
   });
 
+  app.get("/searchtest", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/testsearchdb.html"));
+  });
+
+  app.get("/acttest", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/testactivitydb.html"));
+  });
+
 };

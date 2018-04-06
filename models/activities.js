@@ -5,14 +5,13 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       validate: {
         len: [3],
-        isAlphanumeric: true
       }
     },
-    activityIdentification: {
+    activityNum: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        isNumeric: true
+        isInt: true
       }
     },
     difficulty: {
@@ -21,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
     length: {
       type: DataTypes.DECIMAL(10, 2),
       validate: {
-        isNumeric: true
+        isDecimal: true
       }
     },
     rating: {

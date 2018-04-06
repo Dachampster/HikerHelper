@@ -1,29 +1,29 @@
 module.exports = function(sequelize, DataTypes) {
   var SearchParam = sequelize.define("SearchParam", {
     latitude: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10, 6),
       allowNull: false,
       validate: {
-        isNumeric: true
+        isDecimal: true
       }
     },
     longitude: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10, 6),
       allowNull: false,
       validate: {
-        isNumeric: true
+        isDecimal: true
       }
     },
     maxDistance: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10, 2),
       validate: {
-        isNumeric: true
+        isDecimal: true
       }
     },
     minLength: {
       type: DataTypes.DECIMAL(10, 2),
       validate: {
-        isNumeric: true
+        isDecimal: true
       }
     }
   });
@@ -32,9 +32,6 @@ module.exports = function(sequelize, DataTypes) {
     SearchParam.hasMany(models.Activity, {
       onDelete: "cascade"
     });
-  };
-
-  SearchParam.associate = function(models){
     SearchParam.belongsTo(models.User, {
       foreignKey: {
         allowNull: false
