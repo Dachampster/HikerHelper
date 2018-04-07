@@ -78,9 +78,10 @@ right: 3%;
 }
 
 #footer{
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 98%;
+    margin-left: 1%;
     clear: both; 
 }
 
