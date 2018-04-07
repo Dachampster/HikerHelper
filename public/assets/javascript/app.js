@@ -8,6 +8,7 @@
   $("#searchButton").on("click",function(){
     event.preventDefault();
     console.log("clicked");
+    $("#hikingDiv").empty();
     
        address = $("#inlineFormInput").val().trim();
   
