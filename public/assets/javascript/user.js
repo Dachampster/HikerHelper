@@ -5,7 +5,7 @@ function addUser(data){
       url: "/api/users",
       data: data
     }).done(function(result){
-      getAllUsers();
+      console.log(result);
     }).fail(function(xhr, responseText, responseStatus){
       if (xhr){
         console.log(xhr.responseText);
