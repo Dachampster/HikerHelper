@@ -8,18 +8,12 @@
   $("#searchButton").on("click",function(){
     event.preventDefault();
     console.log("clicked");
+    $("#hikingDiv").empty();
     
-  //   //  eventName= $("#eventName-input").val().trim();
        address = $("#inlineFormInput").val().trim();
-  //   //  city = $("#city-input").val().trim();
-  //   //  state = $("#state-input").val().trim();
-
-  // searchAndAdd();
+  
 findCoordinates();
-  //   // $("#eventName-input").val("");
       $("#inlineFormInput").val("");
-  //   // $("#city-input").val("");
-  //   // $("#state-input").val("");
 });
 
 
@@ -67,9 +61,38 @@ findCoordinates();
         async: true
     }).done(function(response)
     {
+      
+      var pullID = 0;
+      if(response.trails.length == 0)
+      console.log("No trails found");
+
       for(var i = 0; i < response.trails.length; i++){
       console.log(response.trails[i]);
-    }
+     
+
+      var newDiv = $("<div>");
+      var newIMG = $("<img>");
+      var trailIMG = response.trails[i].imgSmall.replace(/\\\//g, "/");
+      if (trailIMG == '')
+      trailIMG = "http://via.placeholder.com/240x180"
+      newIMG.attr("src", trailIMG);
+      
+      newIMG.attr('data-pullID', pullID++);
+      
+      var hikeStars= response.trails[i].stars;
+      
+      var newP = $("<p>");
+      newP.text( "Stars: " + hikeStars);
+      newP.append("<br>Location: " + response.trails[i].location);
+      
+      // need to append to the div in html
+      newDiv.append(newP);
+      newDiv.append(newIMG);
+      newDiv.addClass("trails");
+      
+      $("#hikingDiv").prepend(newDiv);
+      
+      }
      
      });
       }

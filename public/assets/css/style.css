@@ -74,4 +74,23 @@ right: 3%;
    opacity: 1;
 }
 
-#footer{text-align: center;}
+#footer{
+    text-align: center;
+    clear: both;
+}
+
+#hikingDiv{   
+     margin: 30px;
+    padding-left: 40px;
+}
+
+.trails{
+    width: 275px;
+    height: 250px;
+    margin: 30px;
+    float: left;
+}
+
+.trails:hover{
+    color: pink;
+}

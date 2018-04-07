@@ -1,14 +1,14 @@
 module.exports = function(sequelize, DataTypes) {
   var SearchParam = sequelize.define("SearchParam", {
     latitude: {
-      type: DataTypes.DECIMAL(10, 6),
+      type: DataTypes.DECIMAL(10, 7),
       allowNull: false,
       validate: {
         isDecimal: true
       }
     },
     longitude: {
-      type: DataTypes.DECIMAL(10, 6),
+      type: DataTypes.DECIMAL(10, 7),
       allowNull: false,
       validate: {
         isDecimal: true
