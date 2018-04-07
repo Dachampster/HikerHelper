@@ -36,4 +36,14 @@ module.exports = function(app) {
     });
   });
 
+  app.delete("/api/search", function(req, res) {
+    db.SearchParam.destroy({
+      where: {
+        id: req.body.id
+      }
+    }).then(function(dbSearch) {
+      res.json(dbSearch);
+    });
+  });
+
 };

@@ -39,4 +39,14 @@ module.exports = function(app) {
     });
   });
 
+  app.delete("/api/users", function(req, res) {
+    db.User.destroy({
+      where: {
+        id: req.body.id
+      }
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
+
 };
