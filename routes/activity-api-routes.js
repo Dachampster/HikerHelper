@@ -15,4 +15,14 @@ module.exports = function(app) {
     });
   });
 
+  app.delete("/api/activity", function(req, res) {
+    db.Activity.destroy({
+      where: {
+        id: req.body.id
+      }
+    }).then(function(dbActivity) {
+      res.json(dbActivity);
+    });
+  });
+
 };

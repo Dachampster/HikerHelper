@@ -24,11 +24,9 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     rating: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DECIMAL(10, 1),
       validate: {
-        isInt: true,
-        max: 5,
-        min: 1
+        isDecimal: true
       }
     }
   });
@@ -37,7 +35,8 @@ module.exports = function(sequelize, DataTypes) {
     Activity.belongsTo(models.SearchParam, {
       foreignKey: {
         allowNull: false
-      }
+      },
+      onDelete: "cascade"
     });
   };
 
