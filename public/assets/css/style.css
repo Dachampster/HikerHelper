@@ -97,13 +97,30 @@ right: 3%;
 
 .trails{
     width: 275px;
-    height: 250px;
+    height: 325px;
     margin: 30px;
+    padding: 10px;
     float: left;
+    border-radius: 0.3rem;
+    border-color: #E95420 !important;
+    border-width: thick;
+    border-top-style: ridge;
+    border-style: dashed;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: transform .25s;
 }
 
 .trails:hover{
     color: pink;
+    transform: scale(1.15);
+    
+}
+
+.trails img {
+    height: 180px;
+    width: 240px;
+    text-align: center;
+    border-radius: 0.3rem;
 }
 
 /* Section User */
