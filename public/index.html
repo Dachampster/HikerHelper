@@ -62,17 +62,29 @@
             </div>
           </form>
         </div>
-        <div class="optionSearch">
-          <label for="">Length</label>
-          <input id="slider" data-slider-id='dSlider' type="range" data-slider-min="0" data-slider-max="0" data-slider-step="1" data-slider-value="14"
-          />
-          <label for="">Difficulty</label>
-          <input id="slider" data-slider-id='dSlider' type="range" data-slider-min="0" data-slider-max="0" data-slider-step="1" data-slider-value="14"
-          />
-          <label for="">Scope</label>
-          <input id="slider" data-slider-id='dSlider' type="range" data-slider-min="0" data-slider-max="0" data-slider-step="1" data-slider-value="14"
-          />
-        </div>
+        <form class="optionSearch">
+          <div class="row">
+            <div class="col">
+              <label for="search-min-lng">Minimum Trail Length</label>
+              <input type="number" step="any" class="form-control" id="search-min-lng" placeholder="Length (in miles)">
+            </div>
+            <div class="col">
+              <label for="search-diff">Difficulty</label>
+              <select class="form-control" id="search-diff">
+                <option value="green">Easy</option>
+                <option value="greenBlue">Easy to Intermediate</option>
+                <option value="blue">Intermediate</option>
+                <option value="blueBlack">Intermediate to Hard</option>
+                <option value="black">Hard</option>
+                <option value="dblack">Extremely Hard</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="search-max-dist">Search Radius</label>
+              <input type="number" step="any" class="form-control" id="search-max-dist" placeholder="Maximum Search Radius">
+            </div>
+          </div>
+        </form>
       </div>
       <ol class="carousel-indicators">
         <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
