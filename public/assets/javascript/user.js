@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 
 function addUser(data){
+    console.log("attempting to add user!");
     $.ajax({
       method: "POST",
       url: "/api/users",
@@ -14,8 +15,9 @@ function addUser(data){
     });
   };
 
-  $("#signup").on("submit", function(event){
+  $("#signup").on("click", function(event){
     event.preventDefault();
+    console.log("form submit captured!");
     var userEmail = $("#user-email").val().trim();
     var userPass = $("#user-pass").val();
     var userName = $("#user-name").val().trim();
