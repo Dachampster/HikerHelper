@@ -1,11 +1,13 @@
 const bcrypt = require('bcrypt');
+
 function addUser(data){
+    console.log("attempting to add user!");
     $.ajax({
       method: "POST",
       url: "/api/users",
       data: data
     }).done(function(result){
-      console.log(result);
+      getAllUsers();
     }).fail(function(xhr, responseText, responseStatus){
       if (xhr){
         console.log(xhr.responseText);
@@ -13,9 +15,9 @@ function addUser(data){
     });
   };
 
-  $("#add").on("submit", function(event){
+  $("#signup").on("click", function(event){
     event.preventDefault();
-    console.log("clicked");
+    console.log("form submit captured!");
     var userEmail = $("#user-email").val().trim();
     var userPass = $("#user-pass").val();
     var userName = $("#user-name").val().trim();
@@ -28,11 +30,10 @@ function addUser(data){
         // pass up "hash" to mySQL instead of what they entered for password
         pass = hash;
     });
-    console.log(boop);
     var newUser = {
-      email: userEmail,
       displayName: userName,
-      password: hash
+      email: userEmail,
+      password: pass
     };
     addUser(newUser);
   });
