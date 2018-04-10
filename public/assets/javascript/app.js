@@ -37,7 +37,7 @@
    //   // $("#city-input").val("");
    //   // $("#state-input").val("");
 
-   setTimeout(function(){ location.href= '#hikingDiv'; }, 1000);
+   setTimeout(function(){ location.href= '#hikingDiv'; }, 500);
    
  });
 
