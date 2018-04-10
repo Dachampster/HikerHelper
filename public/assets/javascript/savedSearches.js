@@ -1,6 +1,12 @@
 $(document).ready(function(){
-  // variable for the user id of the searches to pull (need to figure out how to get this)
-  var userId = 1;
+
+  var userId = sessionStorage.getItem("id");
+
+  function initial(){
+    if(userId){
+      getSaves();
+    }
+  };
 
   function getSaves(){
     $.get("/api/users/" + userId, function(data){
@@ -27,14 +33,14 @@ $(document).ready(function(){
       console.log(response.results[2].formatted_address);
       var listItem = $("<li>");
       var listItemSpan = $("<span>");
-      listItemSpan.attr("data-lat", data.latitude);
-      listItemSpan.attr("data-lng", data.longitude);
-      listItemSpan.text(address);
+      listItemSpan.attr("data-lat", data.latitude)
+                  .attr("data-lng", data.longitude)
+                  .text(address);
       var delSearchBttn = $("<button>");
-      delSearchBttn.attr("class", "btn btn-primary del");
-      delSearchBttn.attr("data-id", data.id);
-      delSearchBttn.attr("data-type", "search");
-      delSearchBttn.text("Delete Search");
+      delSearchBttn.attr("class", "btn btn-primary del")
+                   .attr("data-id", data.id)
+                   .attr("data-type", "search")
+                   .text("Delete Search");
       listItem.append(listItemSpan, delSearchBttn);
       var subList;
       var subListItem;
@@ -45,13 +51,13 @@ $(document).ready(function(){
         data.Activities.forEach(function(item){
           subListItem = $("<li>");
           subListSpan = $("<span>");
-          subListSpan.attr("data-activity", item.activityNum);
-          subListSpan.text(item.name);
+          subListSpan.attr("data-activity", item.activityNum)
+                     .text(item.name);
           delActBttn = $("<button>");
-          delActBttn.attr("class", "btn btn-sm btn-primary del");
-          delActBttn.attr("data-id", item.id);
-          delActBttn.attr("data-type", "activity");
-          delActBttn.text("Delete Activity");
+          delActBttn.attr("class", "btn btn-sm btn-primary del")
+                    .attr("data-id", item.id)
+                    .attr("data-type", "activity")
+                    .text("Delete Activity");
           subListItem.append(subListSpan, delActBttn);
           subList.append(subListItem);
         });
@@ -60,6 +66,10 @@ $(document).ready(function(){
       $("#saves").append(listItem);
     });
   };
+
+  function saveActivity(){
+    gsl
+  }
 
   $(document).on("click", ".del", function(){
     console.log("clicked");
@@ -82,5 +92,4 @@ $(document).ready(function(){
     });
   });
 
-  getSaves();
 });

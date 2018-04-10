@@ -4,7 +4,10 @@ var bcrypt = require('bcrypt');
 module.exports = function (app) {
 
   app.get("/api/users", function (req, res) {
-    db.User.findAll({
+    db.User.findOne({
+      where: {
+        email: req.query.email,
+      },
       include: [
         {
           model: db.SearchParam, include: [
@@ -13,7 +16,17 @@ module.exports = function (app) {
         }
       ]
     }).then(function (dbUser) {
-      res.json(dbUser);
+      bcrypt.compare(req.query.password, dbUser.dataValues.password, function(err, result){
+        var name = "";
+        if (result){
+          name = dbUser.dataValues.displayName;
+        };
+        var response = {
+          loggedin: result,
+          displayName: name
+        };
+        res.json(response);
+      });
     });
   });
 
