@@ -67,8 +67,33 @@ $(document).ready(function(){
     });
   };
 
-  function saveActivity(){
-    gsl
+  function saveSearch(searchData, activityData){
+    $.ajax({
+      method: "POST",
+      url: "/api/search",
+      data: searchData
+    }).done(function(result){
+      activityData.SearchParamId = result.id;
+      saveActivity(activityData);
+    }).fail(function(xhr, responseText, responseStatus){
+      if (xhr){
+        console.log(xhr.responseText);
+      };
+    });
+  };
+
+  function saveActivity(activityData){
+    $.ajax({
+      method: "POST",
+      url: "/api/activity",
+      data: activityData
+    }).done(function(result){
+      console.log("added activity result: " + result);
+    }).fail(function(xhr, responseText, responseStatus){
+      if (xhr){
+        console.log(xhr.responseText);
+      };
+    });
   }
 
   $(document).on("click", ".del", function(){
@@ -90,6 +115,47 @@ $(document).ready(function(){
         console.log(xhr.responseText);
       };
     });
+  });
+
+  $(document).on("click", "#save-act", function(){
+    var userId = 1;
+    var searchLat = parseFloat($("#hikingDiv").attr("data-lat"));
+    var searchLng = parseFloat($("#hikingDiv").attr("data-lng"));
+    var searchDist = parseFloat($("#hikingDiv").attr("data-radius"));
+    var searchLength = parseFloat($("#hikingDiv").attr("data-length"));
+
+    var actName = $(".modal-body img").attr("data-actName");
+    var actNum = parseFloat($(".modal-body img").attr("data-actNum"));
+    var actDiff = $(".modal-body img").attr("data-actDiff");
+    var actLength = parseFloat($(".modal-body img").attr("data-actLength"));
+    var actRating = parseFloat($(".modal-body img").attr("data-actRating"));
+
+    var searchInfo = {
+      latitude: searchLat,
+      longitude: searchLng,
+      maxDistance: searchDist,
+      minLength: searchLength,
+      UserId: userId
+    };
+
+    var activityInfo = {
+      name: actName,
+      activityNum: actNum,
+      difficulty: actDiff,
+      length: actLength,
+      rating: actRating
+    };
+
+    $.get("/api/check/search", searchInfo, function(data){
+      console.log(data);
+      if (data.length === 0){
+        saveSearch(searchInfo, activityInfo);
+      } else {
+        activityInfo.SearchParamId = data[0].id;
+        saveActivity(activityInfo);
+      };
+    });
+
   });
 
 });

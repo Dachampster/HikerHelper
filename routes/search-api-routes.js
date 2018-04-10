@@ -36,6 +36,21 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/check/search", function(req, res) {
+    db.SearchParam.findAll({
+      where: {
+        latitude: req.query.latitude,
+        longitude: req.query.longitude,
+        maxDistance: req.query.maxDistance,
+        minLength: req.query.minLength,
+        UserId: req.query.UserId
+      },
+      include: [db.Activity]
+    }).then(function(dbSearch) {
+      res.json(dbSearch);
+    });
+  });
+
   app.delete("/api/search", function(req, res) {
     db.SearchParam.destroy({
       where: {

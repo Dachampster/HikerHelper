@@ -157,7 +157,12 @@
          var thisTrail = currentSearchesArray[thisIndex];
          var trailIMG = thisTrail.imgSmallMed.replace(/\\\//g, "/");
        $(".modal-title").text(thisTrail.name);
-       $(".modal-body img").attr("src", trailIMG);
+       $(".modal-body img").attr("src", trailIMG)
+                           .attr("data-actNum", $(this).attr("data-actNum"))
+                           .attr("data-actName", $(this).attr("data-actName"))
+                           .attr("data-actDiff", $(this).attr("data-actDiff"))
+                           .attr("data-actLength", $(this).attr("data-actLength"))
+                           .attr("data-actRating", $(this).attr("data-actRating"))
        $(".modal-body p").text(thisTrail.location);
        })
  
