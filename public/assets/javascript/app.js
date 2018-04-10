@@ -9,7 +9,9 @@
      event.preventDefault();
      currentSearchesArray = [];
      $("#hikingDiv").empty();
+   
      console.log("clicked");
+
      
    //   //  eventName= $("#eventName-input").val().trim();
         address = $("#inlineFormInput").val().trim();
@@ -22,7 +24,12 @@
        $("#inlineFormInput").val("");
    //   // $("#city-input").val("");
    //   // $("#state-input").val("");
+
+   setTimeout(function(){ location.href= '#hikingDiv'; }, 1000);
+   
  });
+
+ 
  
  
    function findCoordinates(){
