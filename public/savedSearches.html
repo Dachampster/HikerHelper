@@ -12,14 +12,37 @@
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="assets/javascript/user.js"></script>
   <script src="assets/javascript/savedSearches.js"></script>
   <title>Saved Searches</title>
 </head>
 <body>
-  <h1 id="title">Saved Searches</h1>
+  <section class="mainSection">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mainNavBar">
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Reviews</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+        </ul>
+        <span class="navbar-brand titleNav" id="title">Project 2</span>
+        <ul id="signInLink" class="navbar-nav mr-auto">
+          <!-- dynamically generated sign in or user menu -->
+        </ul>
+      </div>
+    </nav>
+  </section>
   <ul id = "saves">
     <!-- list of saved items -->
   </ul>
