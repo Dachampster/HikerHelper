@@ -182,4 +182,10 @@ right: 3%;
 }
 
 
+.modal-body img{
+    border-radius: 0.3rem;
+}
 
+.modal-body{
+    box-shadow: #E95420;
+}

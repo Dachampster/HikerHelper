@@ -66,11 +66,9 @@
         <form class="optionSearch">
           <div class="row">
             <div class="col">
-              <label for="search-min-lng">Minimum Trail Length</label>
-              <input type="number" step="any" class="form-control" id="search-min-lng" placeholder="Length (in miles)">
+              <input type="number" step="any" class="form-control" id="search-min-lng" placeholder="Minimum Trial Length (in miles)">
             </div>
             <div class="col">
-              <label for="search-diff">Difficulty</label>
               <select class="form-control" id="search-diff">
                 <option value="green">Easy</option>
                 <option value="greenBlue">Kinda Easy</option>
@@ -81,8 +79,7 @@
               </select>
             </div>
             <div class="col">
-              <label for="search-max-dist">Search Radius</label>
-              <input type="number" step="any" class="form-control" id="search-max-dist" placeholder="Maximum Search Radius">
+              <input type="number" step="any" class="form-control" id="search-max-dist" placeholder="Maximum Search Radius (in miles)">
             </div>
           </div>
         </form>
@@ -124,7 +121,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
+          <h5 class="modal-title" id="content-title">Modal title</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -134,18 +131,19 @@
           <p>Modal body text goes here.</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" id="save-act">Save Activity</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" id="save-act">Save Activity</button>
+          <button type="button" class="btn btn-primary" id = "bookTrip">Book Trip (Find airport)</button>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- sign in modal -->
   <div class="modal" id="signIn-Modal">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Sign In</h5>
+          <h5 class="modal-title" id = "signIn-Modal-title">Sign In</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -173,6 +171,7 @@
     </div>
   </div>
 
+  <!-- create account modal -->
   <div class="modal" id="signUp-Modal">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
