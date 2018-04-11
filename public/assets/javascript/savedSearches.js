@@ -118,6 +118,15 @@ $(document).ready(function(){
   });
 
   $(document).on("click", "#save-act", function(){
+
+    if (sessionStorage.getItem("user")) { saveSearch();}
+    else {
+      console.log("not logged in!");
+      $("#signIn-Modal").modal("show");
+    }
+  });
+
+  function saveSearch(){
     var userId = 1;
     var searchLat = parseFloat($("#hikingDiv").attr("data-lat"));
     var searchLng = parseFloat($("#hikingDiv").attr("data-lng"));
@@ -155,7 +164,6 @@ $(document).ready(function(){
         saveActivity(activityInfo);
       };
     });
-
-  });
+  }
 
 });
