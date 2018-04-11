@@ -143,7 +143,6 @@
             newDiv.addClass("trails");
             
             $("#hikingDiv").append(newDiv);
-          
           }
           console.log(currentSearchesArray);
           });
@@ -190,8 +189,9 @@
                               .attr("data-actDiff", $(this).attr("data-actDiff"))
                               .attr("data-actLength", $(this).attr("data-actLength"))
                               .attr("data-actRating", $(this).attr("data-actRating"))
-          $(".modal-body p").text(thisTrail.location);
+          $("#content-title").text(thisTrail.location);
           $(".modal-body p").append("<p>Current Condition Details: " + thisTrail.conditionDetails + "</p>");
+          
        })
  
        $(document).on("click","#bookTrip",function(){
