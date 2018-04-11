@@ -19,11 +19,12 @@ $( document ).ready(function() {
       dropDownDiv.attr("class", "dropdown-menu")
       var menuItem1 = $("<a>");
       menuItem1.attr("class", "dropdown-item")
-               .attr("id", )
+               .attr("id", "savedSearches")
                .attr("href", "#")
                .text("My Searches");
       var menuItem2 = $("<a>");
       menuItem2.attr("class", "dropdown-item")
+               .attr("id", "signOut")
                .attr("href", "#")
                .text("Sign Out");
       dropDownDiv.append(menuItem1, menuItem2);
@@ -60,6 +61,7 @@ $( document ).ready(function() {
   function loginUser(data){
     $.get("/api/users", data, function(result){
       console.log(result);
+      sessionStorage.clear();
       if (result.loggedin){
         sessionStorage.setItem("id", result.id);
         sessionStorage.setItem("user", result.displayName);
@@ -103,6 +105,11 @@ $( document ).ready(function() {
     };
 
     loginUser(loginData);
+  });
+
+  $(document).on("click", "#signOut", function(){
+    sessionStorage.clear();
+    checkLogin();
   });
 
   checkLogin();
