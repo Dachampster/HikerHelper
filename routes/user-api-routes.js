@@ -16,6 +16,7 @@ module.exports = function (app) {
         }
       ]
     }).then(function (dbUser) {
+      console.log(dbUser);
       bcrypt.compare(req.query.password, dbUser.dataValues.password, function(err, result){
         var db = dbUser.dataValues;
         db.loggedin = result
