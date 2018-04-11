@@ -1,19 +1,13 @@
 $(document).ready(function(){
 
-  var userId = sessionStorage.getItem("id");
-
-  function initial(){
-    if(userId){
-      getSaves();
-    }
-  };
-
-  function getSaves(){
-    $.get("/api/users/" + userId, function(data){
+  function getSaves(loginInfo){
+    $.get("/api/users", loginInfo, function(data){
       console.log(data);
       var displayName = data.displayName;
-      $("#title").text(`${displayName}'s Saved Searches`);
-      $("#saves").empty();
+      var titleHeadline = $("<h2>");
+      titleHeadline.text(`${displayName}'s Saved Searches`);
+      $("#hikingDiv").empty();
+      $("#hikingDiv").append(titleHeadline);
       data.SearchParams.forEach(function(item){
         createSavesList(item);
       });
@@ -63,7 +57,7 @@ $(document).ready(function(){
         });
         listItem.append(subList);
       };
-      $("#saves").append(listItem);
+      $("#hikingDiv").append(listItem);
     });
   };
 
@@ -156,6 +150,16 @@ $(document).ready(function(){
       };
     });
 
+  });
+
+  $(document).on("click", "#savedSearches", function(){
+    var userEmail = sessionStorage.getItem("email");
+    var userPass = sessionStorage.getItem("password");
+    var authInfo = {
+      email: userEmail,
+      password: userPass
+    };
+    getSaves(authInfo);
   });
 
 });

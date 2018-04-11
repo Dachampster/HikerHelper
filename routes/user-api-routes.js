@@ -6,7 +6,7 @@ module.exports = function (app) {
   app.get("/api/users", function (req, res) {
     db.User.findOne({
       where: {
-        email: req.query.email,
+        email: req.query.email
       },
       include: [
         {
@@ -17,16 +17,9 @@ module.exports = function (app) {
       ]
     }).then(function (dbUser) {
       bcrypt.compare(req.query.password, dbUser.dataValues.password, function(err, result){
-        var name = "";
-        if (result){
-          name = dbUser.dataValues.displayName;
-        };
-        var response = {
-          loggedin: result,
-          displayName: name,
-          id: dbUser.dataValues.id
-        };
-        res.json(response);
+        var db = dbUser.dataValues;
+        db.loggedin = result
+        res.json(db);
       });
     });
   });
