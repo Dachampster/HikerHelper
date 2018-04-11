@@ -61,67 +61,8 @@ $(document).ready(function(){
     });
   };
 
-  function saveSearch(searchData, activityData){
-    $.ajax({
-      method: "POST",
-      url: "/api/search",
-      data: searchData
-    }).done(function(result){
-      activityData.SearchParamId = result.id;
-      saveActivity(activityData);
-    }).fail(function(xhr, responseText, responseStatus){
-      if (xhr){
-        console.log(xhr.responseText);
-      };
-    });
-  };
-
-  function saveActivity(activityData){
-    $.ajax({
-      method: "POST",
-      url: "/api/activity",
-      data: activityData
-    }).done(function(result){
-      console.log("added activity result: " + result);
-    }).fail(function(xhr, responseText, responseStatus){
-      if (xhr){
-        console.log(xhr.responseText);
-      };
-    });
-  }
-
-  $(document).on("click", ".del", function(){
-    console.log("clicked");
-    var delId = {
-      id: parseInt($(this).attr("data-id"))
-    };
-    var type = $(this).attr("data-type");
-    var url = "/api/" + type;
-
-    $.ajax({
-      method: "DELETE",
-      url: url,
-      data: delId
-    }).done(function(result){
-      getSaves();
-    }).fail(function(xhr, responseText, responseStatus){
-      if(xhr){
-        console.log(xhr.responseText);
-      };
-    });
-  });
-
-  $(document).on("click", "#save-act", function(){
-
-    if (sessionStorage.getItem("user")) { saveSearch();}
-    else {
-      console.log("not logged in!");
-      $("#signIn-Modal").modal("show");
-    }
-  });
-
-  function saveSearch(){
-    var userId = 1;
+  function search(){
+    var userId = sessionStorage.getItem("id");
     var searchLat = parseFloat($("#hikingDiv").attr("data-lat"));
     var searchLng = parseFloat($("#hikingDiv").attr("data-lng"));
     var searchDist = parseFloat($("#hikingDiv").attr("data-radius"));
@@ -158,7 +99,66 @@ $(document).ready(function(){
         saveActivity(activityInfo);
       };
     });
-  }
+  };
+
+  function saveSearch(searchData, activityData){
+    $.ajax({
+      method: "POST",
+      url: "/api/search",
+      data: searchData
+    }).done(function(result){
+      activityData.SearchParamId = result.id;
+      saveActivity(activityData);
+    }).fail(function(xhr, responseText, responseStatus){
+      if (xhr){
+        console.log(xhr.responseText);
+      };
+    });
+  };
+
+  function saveActivity(activityData){
+    $.ajax({
+      method: "POST",
+      url: "/api/activity",
+      data: activityData
+    }).done(function(result){
+      console.log("added activity result: " + result);
+    }).fail(function(xhr, responseText, responseStatus){
+      if (xhr){
+        console.log(xhr.responseText);
+      };
+    });
+  };
+
+  $(document).on("click", ".del", function(){
+    var delId = {
+      id: parseInt($(this).attr("data-id"))
+    };
+    var type = $(this).attr("data-type");
+    var url = "/api/" + type;
+
+    $.ajax({
+      method: "DELETE",
+      url: url,
+      data: delId
+    }).done(function(result){
+      getSaves();
+    }).fail(function(xhr, responseText, responseStatus){
+      if(xhr){
+        console.log(xhr.responseText);
+      };
+    });
+  });
+
+  $(document).on("click", "#save-act", function(){
+
+    if (sessionStorage.getItem("user")){
+      search();
+    } else {
+      console.log("not logged in!");
+      $("#signIn-Modal").modal("show");
+    };
+  });
 
   $(document).on("click", "#savedSearches", function(){
     var userEmail = sessionStorage.getItem("email");

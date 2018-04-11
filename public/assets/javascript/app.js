@@ -13,7 +13,6 @@
      currentSearchesArray = [];
      $("#hikingDiv").empty();
    
-     console.log("clicked");
 
      
    //   //  eventName= $("#eventName-input").val().trim();
@@ -69,7 +68,6 @@
                       .attr("data-lat", searchLat)
                       .attr("data-lng", searchLon);
 
-       console.log("lat: "+ searchLat + ", lon: " + searchLon);
        hikingSearch(searchLat,searchLon);
       
       });
@@ -86,8 +84,7 @@
        
        
        
-       var queryUrl = "https://www.hikingproject.com/data/get-trails?lat="+hikeSearch.lat+"&lon="+hikeSearch.lon+"&maxDistance=30&key=" + hikeSearch.hikingApiKey;
-       console.log(" hikingSearch:  lat: "+ hikeSearch.lat + ", lng: " + hikeSearch.lon);
+       var queryUrl = "https://www.hikingproject.com/data/get-trails?lat="+hikeSearch.lat+"&lon="+hikeSearch.lon+"&maxDistance="+searchRadius+"&minLength="+searchLength+"&key=" + hikeSearch.hikingApiKey;
        
        $.ajax({
          url: queryUrl,
@@ -156,7 +153,7 @@
          var thisIndex = $(this).attr("data-pullid");
          var thisTrail = currentSearchesArray[thisIndex];
          var trailIMG = thisTrail.imgSmallMed.replace(/\\\//g, "/");
-       $(".modal-title").text(thisTrail.name);
+       $("#content-title").text(thisTrail.name);
        $(".modal-body img").attr("src", trailIMG)
                            .attr("data-actNum", $(this).attr("data-actNum"))
                            .attr("data-actName", $(this).attr("data-actName"))
