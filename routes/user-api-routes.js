@@ -23,7 +23,8 @@ module.exports = function (app) {
         };
         var response = {
           loggedin: result,
-          displayName: name
+          displayName: name,
+          id: dbUser.dataValues.id
         };
         res.json(response);
       });
