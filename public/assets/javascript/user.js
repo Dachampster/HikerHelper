@@ -109,6 +109,7 @@ $( document ).ready(function() {
 
   $(document).on("click", "#signOut", function(){
     sessionStorage.clear();
+    $("#hikingDiv").empty();
     checkLogin();
   });
 
