@@ -15,14 +15,11 @@ $(document).ready(function(){
   };
 
   function createSavesList(data){
-    var latlng = data.latitude + "," + data.longitude;
-    var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latlng +"&key=AIzaSyCWa5eHnMAMi6rkFWh1pg_Ssxz8lTN6lQk";
+    // var latlng = data.latitude + "," + data.longitude;
+    // var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latlng +"&key=AIzaSyCWa5eHnMAMi6rkFWh1pg_Ssxz8lTN6lQk";
 
-    $.ajax({
-      url: queryURL,
-      method: "GET",
-      async: true
-    }).done(function(response){
+    $.get("/api/ex/address", data, function(response){
+      console.log(response);
       var address = response.results[2].formatted_address;
       console.log(response.results[2].formatted_address);
       var listItem = $("<li>");
@@ -59,6 +56,48 @@ $(document).ready(function(){
       };
       $("#hikingDiv").append(listItem);
     });
+
+    // $.ajax({
+    //   url: queryURL,
+    //   method: "GET",
+    //   async: true
+    // }).done(function(response){
+    //   var address = response.results[2].formatted_address;
+    //   console.log(response.results[2].formatted_address);
+    //   var listItem = $("<li>");
+    //   var listItemSpan = $("<span>");
+    //   listItemSpan.attr("data-lat", data.latitude)
+    //               .attr("data-lng", data.longitude)
+    //               .text(address);
+    //   var delSearchBttn = $("<button>");
+    //   delSearchBttn.attr("class", "btn btn-primary del")
+    //                .attr("data-id", data.id)
+    //                .attr("data-type", "search")
+    //                .text("Delete Search");
+    //   listItem.append(listItemSpan, delSearchBttn);
+    //   var subList;
+    //   var subListItem;
+    //   var delActBttn;
+    //   var subListSpan;
+    //   if (data.Activities.length > 0){
+    //     subList = $("<ul>");
+    //     data.Activities.forEach(function(item){
+    //       subListItem = $("<li>");
+    //       subListSpan = $("<span>");
+    //       subListSpan.attr("data-activity", item.activityNum)
+    //                  .text(item.name);
+    //       delActBttn = $("<button>");
+    //       delActBttn.attr("class", "btn btn-sm btn-primary del")
+    //                 .attr("data-id", item.id)
+    //                 .attr("data-type", "activity")
+    //                 .text("Delete Activity");
+    //       subListItem.append(subListSpan, delActBttn);
+    //       subList.append(subListItem);
+    //     });
+    //     listItem.append(subList);
+    //   };
+    //   $("#hikingDiv").append(listItem);
+    // });
   };
 
   function search(){
@@ -73,6 +112,8 @@ $(document).ready(function(){
     var actDiff = $(".modal-body img").attr("data-actDiff");
     var actLength = parseFloat($(".modal-body img").attr("data-actLength"));
     var actRating = parseFloat($(".modal-body img").attr("data-actRating"));
+    var actLat = parseFloat($(".modal-body img").attr("data-actLat"));
+    var actLng = parseFloat($(".modal-body img").attr("data-actLng"));
 
     var searchInfo = {
       latitude: searchLat,
@@ -87,7 +128,9 @@ $(document).ready(function(){
       activityNum: actNum,
       difficulty: actDiff,
       length: actLength,
-      rating: actRating
+      rating: actRating,
+      lat: actLat,
+      lng: actLng
     };
 
     $.get("/api/check/search", searchInfo, function(data){
