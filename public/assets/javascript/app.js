@@ -124,7 +124,7 @@
                   .attr("data-actLength", trailInfo.length)
                   .attr("data-actRating", trailInfo.stars)
                   .attr("data-lat", trailInfo.latitude)
-                  .attr("data-lat", trailInfo.longitude);
+                  .attr("data-long", trailInfo.longitude);
             var newIMG = $("<img>");
             var trailIMG = trailInfo.imgSmall.replace(/\\\//g, "/");
             if (trailIMG == '')

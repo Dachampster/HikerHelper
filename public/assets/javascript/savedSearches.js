@@ -73,6 +73,8 @@ $(document).ready(function(){
     var actDiff = $(".modal-body img").attr("data-actDiff");
     var actLength = parseFloat($(".modal-body img").attr("data-actLength"));
     var actRating = parseFloat($(".modal-body img").attr("data-actRating"));
+    var actLat = $(".modal-body img").attr("data-actLat");
+    var actLong = $(".modal-body img").attr("data-actLong");
 
     var searchInfo = {
       latitude: searchLat,
@@ -87,7 +89,9 @@ $(document).ready(function(){
       activityNum: actNum,
       difficulty: actDiff,
       length: actLength,
-      rating: actRating
+      rating: actRating,
+      lat: actLat,
+      lng: actLong
     };
 
     $.get("/api/check/search", searchInfo, function(data){
