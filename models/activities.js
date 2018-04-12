@@ -28,6 +28,18 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         isDecimal: true
       }
+    },
+    lat: {
+      type: DataTypes.DECIMAL(10, 7),
+      validate: {
+        isDecimal: true
+      }
+    },
+    lng: {
+      type: DataTypes.DECIMAL(10, 7),
+      validate: {
+        isDecimal: true
+      }
     }
   });
 

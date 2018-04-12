@@ -9,6 +9,8 @@ module.exports = function(app) {
       difficulty: req.body.difficulty,
       length: req.body.length,
       rating: req.body.rating,
+      lat: req.body.lat,
+      lng: req.body.lng,
       SearchParamId: req.body.SearchParamId
     }).then(function(dbActivity) {
       res.json(dbActivity);
