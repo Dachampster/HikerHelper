@@ -1,8 +1,10 @@
+// require the dependencies
 var db = require("../models");
 var bcrypt = require('bcrypt');
 
 module.exports = function (app) {
 
+  // get route to check the user's email and password
   app.get("/api/users", function (req, res) {
     db.User.findOne({
       where: {
@@ -21,23 +23,6 @@ module.exports = function (app) {
         db.loggedin = result
         res.json(db);
       });
-    });
-  });
-
-  app.get("/api/users/:id", function (req, res) {
-    db.User.findOne({
-      where: {
-        id: req.params.id
-      },
-      include: [
-        {
-          model: db.SearchParam, include: [
-            { model: db.Activity }
-          ]
-        }
-      ]
-    }).then(function (dbUser) {
-      res.json(dbUser);
     });
   });
 
@@ -61,7 +46,7 @@ module.exports = function (app) {
     });
   });
 
-
+  // delete route to delete the specified user (will also delete all the associted searches and activities)
   app.delete("/api/users", function (req, res) {
     db.User.destroy({
       where: {

@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+  // function to get a users saved searches
   function getSaves(loginInfo){
     $.get("/api/users", loginInfo, function(data){
       console.log(data);
@@ -14,14 +15,11 @@ $(document).ready(function(){
     });
   };
 
+  // function creating list items to display the saved searches
   function createSavesList(data){
-    // var latlng = data.latitude + "," + data.longitude;
-    // var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latlng +"&key=AIzaSyCWa5eHnMAMi6rkFWh1pg_Ssxz8lTN6lQk";
-
+    // get route to convert the latitude and longitude to an address
     $.get("/api/ex/address", data, function(response){
-      console.log(response);
       var address = response.results[2].formatted_address;
-      console.log(response.results[2].formatted_address);
       var listItem = $("<li>");
       var listItemSpan = $("<span>");
       listItemSpan.attr("data-lat", data.latitude)
@@ -57,56 +55,19 @@ $(document).ready(function(){
       $("#hikingDiv").append(listItem);
     });
 
-    // $.ajax({
-    //   url: queryURL,
-    //   method: "GET",
-    //   async: true
-    // }).done(function(response){
-    //   var address = response.results[2].formatted_address;
-    //   console.log(response.results[2].formatted_address);
-    //   var listItem = $("<li>");
-    //   var listItemSpan = $("<span>");
-    //   listItemSpan.attr("data-lat", data.latitude)
-    //               .attr("data-lng", data.longitude)
-    //               .text(address);
-    //   var delSearchBttn = $("<button>");
-    //   delSearchBttn.attr("class", "btn btn-primary del")
-    //                .attr("data-id", data.id)
-    //                .attr("data-type", "search")
-    //                .text("Delete Search");
-    //   listItem.append(listItemSpan, delSearchBttn);
-    //   var subList;
-    //   var subListItem;
-    //   var delActBttn;
-    //   var subListSpan;
-    //   if (data.Activities.length > 0){
-    //     subList = $("<ul>");
-    //     data.Activities.forEach(function(item){
-    //       subListItem = $("<li>");
-    //       subListSpan = $("<span>");
-    //       subListSpan.attr("data-activity", item.activityNum)
-    //                  .text(item.name);
-    //       delActBttn = $("<button>");
-    //       delActBttn.attr("class", "btn btn-sm btn-primary del")
-    //                 .attr("data-id", item.id)
-    //                 .attr("data-type", "activity")
-    //                 .text("Delete Activity");
-    //       subListItem.append(subListSpan, delActBttn);
-    //       subList.append(subListItem);
-    //     });
-    //     listItem.append(subList);
-    //   };
-    //   $("#hikingDiv").append(listItem);
-    // });
   };
 
+  // function building the data variables for storage into the database
   function search(){
+
+    // search information
     var userId = sessionStorage.getItem("id");
     var searchLat = parseFloat($("#hikingDiv").attr("data-lat"));
     var searchLng = parseFloat($("#hikingDiv").attr("data-lng"));
     var searchDist = parseFloat($("#hikingDiv").attr("data-radius"));
     var searchLength = parseFloat($("#hikingDiv").attr("data-length"));
 
+    // activity information
     var actName = $(".modal-body img").attr("data-actName");
     var actNum = parseFloat($(".modal-body img").attr("data-actNum"));
     var actDiff = $(".modal-body img").attr("data-actDiff");
@@ -115,6 +76,7 @@ $(document).ready(function(){
     var actLat = parseFloat($(".modal-body img").attr("data-actLat"));
     var actLng = parseFloat($(".modal-body img").attr("data-actLng"));
 
+    // create the search information object
     var searchInfo = {
       latitude: searchLat,
       longitude: searchLng,
@@ -123,6 +85,7 @@ $(document).ready(function(){
       UserId: userId
     };
 
+    // create the activity information object
     var activityInfo = {
       name: actName,
       activityNum: actNum,
@@ -133,8 +96,8 @@ $(document).ready(function(){
       lng: actLng
     };
 
+    // get route to check if the search has already been saved
     $.get("/api/check/search", searchInfo, function(data){
-      console.log(data);
       if (data.length === 0){
         saveSearch(searchInfo, activityInfo);
       } else {
@@ -144,6 +107,7 @@ $(document).ready(function(){
     });
   };
 
+  // function to save the search paramters
   function saveSearch(searchData, activityData){
     $.ajax({
       method: "POST",
@@ -159,6 +123,7 @@ $(document).ready(function(){
     });
   };
 
+  // function to save the activity paramters
   function saveActivity(activityData){
     $.ajax({
       method: "POST",
@@ -173,6 +138,7 @@ $(document).ready(function(){
     });
   };
 
+  // click event to delete a search or activity (depending on which button is pushed)
   $(document).on("click", ".del", function(){
     var delId = {
       id: parseInt($(this).attr("data-id"))
@@ -193,6 +159,7 @@ $(document).ready(function(){
     });
   });
 
+  // click event to save an activity and/or search after verifying a user is logged in
   $(document).on("click", "#save-act", function(){
 
     if (sessionStorage.getItem("user")){
@@ -203,6 +170,7 @@ $(document).ready(function(){
     };
   });
 
+  // click event to display a user's saved searches
   $(document).on("click", "#savedSearches", function(){
     var userEmail = sessionStorage.getItem("email");
     var userPass = sessionStorage.getItem("password");

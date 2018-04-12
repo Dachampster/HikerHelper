@@ -46,13 +46,16 @@ $(document).ready(function() {
    
   });
 
+  // function to submit the search criteria and get the set of matching trails
   function findNewTrails(data){
 
+    // get call to the /routes/external-api-routes (lines 13-54)
     $.get("/api/ex/trail", data, function(response){
       console.log(response);
       searchLat = response.location.lat;
       searchLon = response.location.lng;
 
+      // add search parameters to data attributes on the hiking container
       $("#hikingDiv").attr("data-length", searchLength)
                      .attr("data-difficulty", searchDiff)
                      .attr("data-radius", searchRadius)
@@ -75,6 +78,8 @@ $(document).ready(function() {
         var trailName = trailInfo.name;
 
         var newDiv = $("<div data-toggle='modal' data-target='#moreInfo-Modal'>");
+
+        // add the returned trail information to data attributes on the individual trail container
         newDiv.attr("data-actNum", trailInfo.id)
               .attr("data-actName", trailInfo.name)
               .attr("data-actDiff", trailInfo.difficulty)

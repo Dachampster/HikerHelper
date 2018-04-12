@@ -1,7 +1,9 @@
+// require the dependencies
 var db = require("../models");
 
 module.exports = function(app) {
 
+  // post route saving a search's parameters to the database
   app.post("/api/search", function(req, res) {
     db.SearchParam.create({
       latitude: req.body.latitude,
@@ -14,17 +16,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/search/:id", function(req, res) {
-    db.SearchParam.findOne({
-      where: {
-        id: req.params.id
-      },
-      include: [db.Activity]
-    }).then(function(dbSearch) {
-      res.json(dbSearch);
-    });
-  });
-
+  // get route to return a user's saved searches and the associted activities
   app.get("/api/search", function(req, res) {
     db.SearchParam.findAll({
       where: {
@@ -36,6 +28,7 @@ module.exports = function(app) {
     });
   });
 
+  // get route used to determine if a specific search has already been made (prevents duplicate searches from being saved)
   app.get("/api/check/search", function(req, res) {
     db.SearchParam.findAll({
       where: {
@@ -51,6 +44,7 @@ module.exports = function(app) {
     });
   });
 
+  // delete route to remove a saved search from the database (will delet all associated activities as well)
   app.delete("/api/search", function(req, res) {
     db.SearchParam.destroy({
       where: {

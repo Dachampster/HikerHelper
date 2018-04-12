@@ -1,6 +1,7 @@
 
 $( document ).ready(function() {
 
+  // function that checks to see if a user is logged into the site and add either a dropdown (if logged in) or a sign in button (if not logged in)
   function checkLogin(){
     $("#signInLink").empty();
     var user = sessionStorage.getItem("user");
@@ -43,6 +44,7 @@ $( document ).ready(function() {
     $("#signInLink").append(listItem);
   };
 
+  // function to call the post route adding a user to the database
   function addUser(data){
     console.log("attempting to add user!");
     $.ajax({
@@ -58,9 +60,9 @@ $( document ).ready(function() {
     });
   };
 
+  // function to check the user's login credentials against the database and set session variables if they are valid
   function loginUser(data){
     $.get("/api/users", data, function(result){
-      console.log(result);
       sessionStorage.clear();
       if (result.loggedin){
         sessionStorage.setItem("id", result.id);
@@ -71,13 +73,11 @@ $( document ).ready(function() {
         checkLogin();
       } else {
         $("#login-pass").addClass("is-invalid");
-      }
-      console.log(sessionStorage.getItem("user"));
-      console.log(sessionStorage.getItem("email"));
-      console.log(sessionStorage.getItem("password"));
+      };
     });
   };
   
+  // click event getting the new login information submitted by the user
   $("#signup").on("click", function(event){
     event.preventDefault();
     console.log("form submit captured!");
@@ -90,10 +90,11 @@ $( document ).ready(function() {
       email: userEmail,
       password: userPass
     };
-    console.log(newUser);
+
     addUser(newUser);
   });
 
+  // click event getting the login credentials submitted by the user
   $("#login").on("click", function(event){
     event.preventDefault();
     var loginEmail = $("#login-email").val().trim();
@@ -107,6 +108,7 @@ $( document ).ready(function() {
     loginUser(loginData);
   });
 
+  // click event to log out the user
   $(document).on("click", "#signOut", function(){
     sessionStorage.clear();
     $("#hikingDiv").empty();
