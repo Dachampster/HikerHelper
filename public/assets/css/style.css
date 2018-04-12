@@ -81,6 +81,7 @@ right: 3%;
     bottom: 0;
     width: 100%;
     clear: both; 
+    margin-top: 10px;
 }
 
 .footer-text{
@@ -90,7 +91,8 @@ right: 3%;
 
 #hikingDiv{   
      margin: 30px 30px 95px 30px;
-    padding-left: 40px;
+    padding-left: 3%;
+    padding-right: 3%;
 }
 
 .trails{
@@ -108,6 +110,7 @@ right: 3%;
     transition: transform .25s;
     cursor: pointer;
     background-color: white;
+    text-align: center;
 }
 
 .trails:hover{
@@ -121,6 +124,9 @@ right: 3%;
     width: 240px;
     text-align: center;
     border-radius: 0.3rem;
+    border: 5px;
+    border-color: #da5d34;
+    border-style: solid;
 }
 
 /* Sign In/Up Section  */

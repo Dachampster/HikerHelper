@@ -124,7 +124,7 @@
                   .attr("data-actLength", trailInfo.length)
                   .attr("data-actRating", trailInfo.stars)
                   .attr("data-lat", trailInfo.latitude)
-                  .attr("data-lat", trailInfo.longitude);
+                  .attr("data-long", trailInfo.longitude);
             var newIMG = $("<img>");
             var trailIMG = trailInfo.imgSmall.replace(/\\\//g, "/");
             if (trailIMG == '')
@@ -184,6 +184,8 @@
           var thisIndex = $(this).attr("data-pullid");
           var thisTrail = currentSearchesArray[thisIndex];
           var trailIMG = thisTrail.imgSmallMed.replace(/\\\//g, "/");
+          if(trailIMG == "")
+            trailIMG =  "http://via.placeholder.com/340x250";
           
           $("#content-title").text(thisTrail.name);
           $(".modal-body img").attr("src", trailIMG)
@@ -192,8 +194,9 @@
                               .attr("data-actDiff", $(this).attr("data-actDiff"))
                               .attr("data-actLength", $(this).attr("data-actLength"))
                               .attr("data-actRating", $(this).attr("data-actRating"))
-          $("#content-title").text(thisTrail.location);
-          $(".modal-body p").append("<p>Current Condition Details: " + thisTrail.conditionDetails + "</p>");
+          $(".modal-body p").empty();
+          $(".modal-body p").append("<p>"+thisTrail.location+"</p>");
+          $(".modal-body p").append("<p>Current Condition Details: " + thisTrail.conditionDetails +"</p>");
           
        })
  
