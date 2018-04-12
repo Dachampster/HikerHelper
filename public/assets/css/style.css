@@ -1,7 +1,7 @@
 
-/* body{
-    margin-bottom: 7vh;
-} */
+body{
+    background-color: #ffdcc5;
+}
 
 *{
     font-family: 'Montserrat', sans-serif;
@@ -10,7 +10,6 @@
 .mainSection,
 .signInUpSection{
     height: 93vh;
-    margin:1%;
 }
 
 .mainNavBar,
@@ -78,11 +77,9 @@ right: 3%;
 }
 
 .footer{
-    margin-top: 2%;
     position: fixed;
     bottom: 0;
-    width: 98%;
-    margin-left: 1%;
+    width: 100%;
     clear: both; 
 }
 
@@ -111,6 +108,7 @@ right: 3%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     transition: transform .25s;
     cursor: pointer;
+    background-color: white;
 }
 
 .trails:hover{
