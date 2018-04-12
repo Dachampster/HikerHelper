@@ -27,6 +27,7 @@ require("./routes/html-routes.js")(app);
 require("./routes/user-api-routes.js")(app);
 require("./routes/search-api-routes.js")(app);
 require("./routes/activity-api-routes.js")(app);
+require("./routes/external-api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
