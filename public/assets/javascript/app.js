@@ -36,7 +36,7 @@
    //   // $("#city-input").val("");
    //   // $("#state-input").val("");
 
-   setTimeout(function(){ location.href= '#hikingDiv'; }, 500);
+  //  setTimeout(function(){ location.href= '#hikingDiv'; }, 500);
    
  });
 
@@ -195,8 +195,11 @@
                               .attr("data-actLength", $(this).attr("data-actLength"))
                               .attr("data-actRating", $(this).attr("data-actRating"))
           $(".modal-body p").empty();
-          $(".modal-body p").append("<p>"+thisTrail.location+"</p>");
-          $(".modal-body p").append("<p>Current Condition Details: " + thisTrail.conditionDetails +"</p>");
+          $(".modal-body p").append("Location: " + thisTrail.location + "</br></br>");
+          $(".modal-body p").append("Difficulty: " + thisTrail.difficulty + "</br></br>");
+          if(thisTrail.conditionDetails)
+          $(".modal-body p").append("Current Condition Details: " + thisTrail.conditionDetails + "</br></br>");
+
           
        })
  

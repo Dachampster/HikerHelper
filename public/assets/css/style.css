@@ -74,8 +74,24 @@ right: 3%;
 .imagesCarousel{
    height: 86vh;
    opacity: 1;
+   
 }
+#firstSlide,#secondSlide,#thirdSlide{
+    background-attachment: fixed;
+    background-size: 100%;
 
+}   
+#firstSlide{
+    background-image: url("../../assets/images/backpack-clouds-cloudy-sky-771079.jpg");
+    /* https://demo.tagdiv.com/newsmag/wp-content/uploads/2014/08/70.jpg */
+
+}
+#secondSlide{
+background-image: url("../../assets/images/action-adult-adventure-701016.jpg")
+}
+#thirdSlide{
+    background-image: url("../../assets/images/accomplishment-adult-adventure-372098.jpg")
+}
 .footer{
     position: fixed;
     bottom: 0;
