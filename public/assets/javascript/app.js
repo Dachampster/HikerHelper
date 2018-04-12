@@ -42,7 +42,7 @@ $(document).ready(function() {
 
     $("#inlineFormInput").val("");
 
-    setTimeout(function(){ location.href= '#hikingDiv'; }, 500);
+    //setTimeout(function(){ location.href= '#hikingDiv'; }, 500);
    
   });
 
