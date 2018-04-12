@@ -42,6 +42,8 @@ module.exports = function (app) {
         password: pass
       }).then(function (dbUser) {
         res.json(dbUser);
+      }).catch(function(err){
+        res.send(err);
       });
     });
   });

@@ -52,7 +52,37 @@ $( document ).ready(function() {
       url: "/api/users",
       data: data
     }).done(function(result){
-    console.log(result);
+      if (result.errors){
+        result.errors.forEach(function(item){
+          switch (item.path){
+            case "displayName":
+              if (item.validatorKey === "not_unique"){
+                $("#name-invalid").text("That display name is taken. Please choose another.");
+              } else {
+                $("#name-invalid").text("Please enter an alphanumeric (no special characters) display name that is at least 3 characters long.");
+              };
+              $("#user-name").addClass("is-invalid");
+              break;
+            case "email":
+              if (item.validatorKey === "not_unique"){
+                $("#email-invalid").text("There is already an account with the email address.");
+              } else {
+                $("#email-invalid").text("Please enter a valid email address.");
+              };
+              $("#user-email").addClass("is-invalid");
+              break;
+            case "password":
+              $("#user-pass").addClass("is-invalid");
+          };
+        });
+      } else {
+        sessionStorage.setItem("id", result.id);
+        sessionStorage.setItem("user", result.displayName);
+        sessionStorage.setItem("email", data.email);
+        sessionStorage.setItem("password", data.password);
+        $("#signUp-Modal").modal("toggle");
+        checkLogin();
+      };
     }).fail(function(xhr, responseText, responseStatus){
       if (xhr){
         console.log(xhr.responseText);
@@ -91,7 +121,11 @@ $( document ).ready(function() {
       password: userPass
     };
 
-    addUser(newUser);
+    if (userPass.length < 6){
+      $("#user-pass").addClass("is-invalid");
+    } else {
+      addUser(newUser);
+    };
   });
 
   // click event getting the login credentials submitted by the user
@@ -116,6 +150,22 @@ $( document ).ready(function() {
   });
 
   checkLogin();
+
+  $("#login-pass").focus(function(){
+    $("#login-pass").removeClass("is-invalid");
+  });
+
+  $("#user-pass").focus(function(){
+    $("#user-pass").removeClass("is-invalid");
+  });
+
+  $("#user-name").focus(function(){
+    $("#user-name").removeClass("is-invalid");
+  });
+
+  $("#user-email").focus(function(){
+    $("#user-email").removeClass("is-invalid");
+  });
 
 });
 

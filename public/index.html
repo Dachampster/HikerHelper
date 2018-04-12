@@ -187,12 +187,18 @@
             <div class="form-group">
               <label for="user-name" class="control-label">Name</label>
               <input type="text" class="form-control" id="user-name" placeholder="Name" required>
+              <div class="invalid-feedback" id="name-invalid">
+                Please enter an alphanumeric (no special characters) display name that is at least 3 characters long.
+              </div>
             </div>
             <div class="form-group">
               <label for="user-email" class="control-label">Email</label>
               <input type="email" class="form-control" id="user-email" placeholder="Email" data-error="Please enter a valid email address."
                 required>
               <div class="help-block with-errors"></div>
+              <div class="invalid-feedback" id="email-invalid">
+                Please enter a valid email address.
+              </div>
             </div>
             <div class="form-group">
               <label for="user-pass" class="control-label">Password</label>
@@ -200,6 +206,9 @@
                 <div class="form-group col-sm-6">
                   <input type="password" data-minlength="6" class="form-control" id="user-pass" placeholder="Password" required>
                   <div class="help-block">Minimum of 6 characters</div>
+                  <div class="invalid-feedback">
+                    Please enter a password that is at least 6 characters long.
+                  </div>
                 </div>
               </div>
             </div>
