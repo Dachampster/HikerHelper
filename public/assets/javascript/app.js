@@ -184,12 +184,9 @@
           var thisIndex = $(this).attr("data-pullid");
           var thisTrail = currentSearchesArray[thisIndex];
           var trailIMG = thisTrail.imgSmallMed.replace(/\\\//g, "/");
-<<<<<<< HEAD
           if(trailIMG == "")
             trailIMG =  "http://via.placeholder.com/340x250";
-=======
           
->>>>>>> 70673a49b8cb7301e427e2ece7f76072dd90a6c6
           $("#content-title").text(thisTrail.name);
           $(".modal-body img").attr("src", trailIMG)
                               .attr("data-actNum", $(this).attr("data-actNum"))
