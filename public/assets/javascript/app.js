@@ -75,7 +75,7 @@
  
      function hikingSearch(hikingLat,hikingLon){
        
-          // Then run a request to the OMDB API with the movie specified
+          
           var hikeSearch = {
               hikingApiKey : "200242829-ff1de9f4eecd59e41080ee24ed53c7ed",
               lat: hikingLat,
@@ -122,7 +122,9 @@
                   .attr("data-actName", trailInfo.name)
                   .attr("data-actDiff", trailInfo.difficulty)
                   .attr("data-actLength", trailInfo.length)
-                  .attr("data-actRating", trailInfo.stars);
+                  .attr("data-actRating", trailInfo.stars)
+                  .attr("data-lat", trailInfo.latitude)
+                  .attr("data-lat", trailInfo.longitude);
             var newIMG = $("<img>");
             var trailIMG = trailInfo.imgSmall.replace(/\\\//g, "/");
             if (trailIMG == '')
@@ -182,6 +184,7 @@
           var thisIndex = $(this).attr("data-pullid");
           var thisTrail = currentSearchesArray[thisIndex];
           var trailIMG = thisTrail.imgSmallMed.replace(/\\\//g, "/");
+          
           $("#content-title").text(thisTrail.name);
           $(".modal-body img").attr("src", trailIMG)
                               .attr("data-actNum", $(this).attr("data-actNum"))
