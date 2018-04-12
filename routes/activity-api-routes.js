@@ -1,7 +1,9 @@
+// require the dependencies
 var db = require("../models");
 
 module.exports = function(app) {
 
+  // post route saving the parameters of an activity to the database
   app.post("/api/activity", function(req, res) {
     db.Activity.create({
       name: req.body.name,
@@ -17,6 +19,7 @@ module.exports = function(app) {
     });
   });
 
+  // delete route to remove a saved activity from the database (will NOT delete the saved search it is associated with)
   app.delete("/api/activity", function(req, res) {
     db.Activity.destroy({
       where: {
