@@ -85,14 +85,29 @@ right: 3%;
     background-image: url("../../assets/images/Artboard 1@3x.png");
     /* https://demo.tagdiv.com/newsmag/wp-content/uploads/2014/08/70.jpg */
     /* ../../assets/images/backpack-clouds-cloudy-sky-771079.jpg */
+    background-size: 100%;
 
 }
 #secondSlide{
-background-image: url("../../assets/images/action-adult-adventure-701016.jpg")
+background-image: url("../../assets/images/action-adult-adventure-701016.jpg");
+background-size: 100%;
 }
 #thirdSlide{
-    background-image: url("../../assets/images/accomplishment-adult-adventure-372098.jpg")
+    background-image: url("../../assets/images/accomplishment-adult-adventure-372098.jpg");
+    background-size: 100%;
 }
+
+#fourthSlide{
+    background-image: url("../../assets/images/backpack-clouds-cloudy-sky-771079.jpg");
+    background-size: 100%;
+}
+
+#fifthSlide{
+    background-image: url("../../assets/images/adventure-calm-clouds-414171.jpg");
+    background-size: 100%;
+
+}
+
 .footer{
     position: fixed;
     bottom: 0;

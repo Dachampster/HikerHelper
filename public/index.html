@@ -16,7 +16,6 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-  <!-- <script src="assets/javascript/app.js"></script> -->
   <script src="assets/javascript/app.js"></script>
   <script src="assets/javascript/user.js"></script>
   <script src="assets/javascript/savedSearches.js"></script>
@@ -90,6 +89,8 @@
         <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselIndicators" data-slide-to="1"></li>
         <li data-target="#carouselIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselIndicators" data-slide-to="3"></li>
+        <li data-target="#carouselIndicators" data-slide-to="4"></li>
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -100,6 +101,12 @@
         </div>
         <div class="carousel-item">
           <div class="d-block w-100 imagesCarousel" id = "thirdSlide"   alt="Third slide"></div>
+        </div>
+        <div class="carousel-item">
+          <div class="d-block w-100 imagesCarousel" id = "fourthSlide"   alt="Fourth slide"></div>
+        </div>
+        <div class="carousel-item">
+          <div class="d-block w-100 imagesCarousel" id = "fifthSlide"   alt="Fifth slide"></div>
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
@@ -134,8 +141,12 @@
           <p>Modal body text goes here.</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" id="save-act">Save Activity</button>
-          <button type="button" class="btn btn-primary" id = "bookTrip">Book Trip (Find airport)</button>
+          <button type="button" class="btn btn-secondary" id="save-act" data-dismiss="modal" aria-label="Save Activity">
+            <span aria-hidden="true">Save Activity</span>
+          </button>
+          <button type="button" class="btn btn-primary" id = "bookTrip" data-dismiss="modal" aria-label="Save Activity">
+            <span aria-hidden="true">Book Trip (Find airport)</span>
+          </button>
         </div>
       </div>
     </div>

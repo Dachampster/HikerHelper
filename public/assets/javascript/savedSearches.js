@@ -75,6 +75,7 @@ $(document).ready(function(){
     var actRating = parseFloat($(".modal-body img").attr("data-actRating"));
     var actLat = parseFloat($(".modal-body img").attr("data-actLat"));
     var actLng = parseFloat($(".modal-body img").attr("data-actLng"));
+    var actImgUrl = $(".modal-body img").attr("src");
 
     // create the search information object
     var searchInfo = {
@@ -93,7 +94,8 @@ $(document).ready(function(){
       length: actLength,
       rating: actRating,
       lat: actLat,
-      lng: actLng
+      lng: actLng,
+      imgUrl: actImgUrl
     };
 
     // get route to check if the search has already been saved

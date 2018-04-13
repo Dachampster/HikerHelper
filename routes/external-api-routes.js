@@ -5,7 +5,8 @@ var db = require("../models");
 var keys = require("../keys.js");
 
 // activate api keys
-var googleMapsKey = keys.google.id;
+var googleMapsGeoKey = keys.google.id;
+var googleMapsAirKey = keys.google.air_id;
 var trailsKey = keys.trail.id;
 
 module.exports = function(app) {
@@ -16,10 +17,10 @@ module.exports = function(app) {
     var searchRadius = req.query.searchRadius;
     var searchLength = req.query.searchLength;
 
-    var googleUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + googleMapsKey;
+    var latlngUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + googleMapsGeoKey;
 
     // request to the googlemaps geocode api to convert the address into latitude and longitude
-    request(googleUrl, function(error, response, body){
+    request(latlngUrl, function(error, response, body){
       var externalRes = {};
 
       if (error){
@@ -28,8 +29,8 @@ module.exports = function(app) {
       };
 
       // collect lat & long from body
-      var googleParsed = JSON.parse(body);
-      externalRes.location = googleParsed.results[0].geometry.location;
+      var latlngParsed = JSON.parse(body);
+      externalRes.location = latlngParsed.results[0].geometry.location;
 
       var trailUrl = "https://www.hikingproject.com/data/get-trails?lat="+
                       externalRes.location.lat+
@@ -57,17 +58,34 @@ module.exports = function(app) {
   app.get("/api/ex/address", function(req, res) {
     var latlng = req.query.latitude + "," + req.query.longitude;
 
-    var queryUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latlng +"&key=" + googleMapsKey;
+    var addressUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latlng +"&key=" + googleMapsGeoKey;
 
-    request(queryUrl, function(error, response, body){
+    request(addressUrl, function(error, response, body){
       if (error){
         console.log("Error Occurred: " + error);
         return res.json(error);
       };
 
-      var parsed = JSON.parse(body);
+      var addressParsed = JSON.parse(body);
 
-      res.send(parsed);
+      res.send(addressParsed);
     });
-  })
+  });
+
+  app.get("/api/ex/airport", function(req, res){
+    var latlng = req.query.latitude + "," + req.query.longitude;
+
+    var airportURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latlng + "&radius=5000&types=airport&key=" + googleMapsAirKey;
+
+    request(airportURL, function(error, response, body){
+      if (error){
+        console.log("Error Occurred: " + error);
+        return res.json(error);
+      };
+
+      var airportParsed = JSON.parse(body);
+
+      res.send(airportParsed);
+    });
+  });
 };
