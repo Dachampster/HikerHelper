@@ -122,7 +122,7 @@ background-size: 100%;
 }
 
 #hikingDiv{   
-     margin: 30px 30px 95px 30px;
+    margin: 30px 30px 95px 30px;
     padding-left: 3%;
     padding-right: 3%;
 }
@@ -143,6 +143,7 @@ background-size: 100%;
     cursor: pointer;
     background-color: white;
     text-align: center;
+    margin: 0px 30px 75px 30px;
 }
 
 .trails:hover{
@@ -159,6 +160,15 @@ background-size: 100%;
     border: 5px;
     border-color: #da5d34;
     border-style: solid;
+}
+
+.saves {
+    list-style-type: none;
+}
+
+.jq-ry-container {
+    float: right;
+    margin-top: 5px;
 }
 
 /* Sign In/Up Section  */
