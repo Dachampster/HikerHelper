@@ -153,7 +153,13 @@ $(document).ready(function(){
       url: url,
       data: delId
     }).done(function(result){
-      getSaves();
+      var userEmail = sessionStorage.getItem("email");
+      var userPass = sessionStorage.getItem("password");
+      var authInfo = {
+        email: userEmail,
+        password: userPass
+      };
+      getSaves(authInfo);
     }).fail(function(xhr, responseText, responseStatus){
       if(xhr){
         console.log(xhr.responseText);
@@ -181,6 +187,9 @@ $(document).ready(function(){
       password: userPass
     };
     getSaves(authInfo);
+    $('html,body').animate({
+      scrollTop: $("#hikingDiv").offset().top
+    }, 'slow');
   });
 
 });

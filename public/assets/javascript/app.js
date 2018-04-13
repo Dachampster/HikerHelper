@@ -109,6 +109,9 @@ $(document).ready(function() {
         
         $("#hikingDiv").append(newDiv);
       }
+      $('html,body').animate({
+        scrollTop: $("#hikingDiv").offset().top
+      }, 'slow');
       console.log(currentSearchesArray);
     });
    
