@@ -54,6 +54,7 @@ $( document ).ready(function() {
     }).done(function(result){
       if (result.errors){
         result.errors.forEach(function(item){
+          // error handling if there are validation errors when trying to add user
           switch (item.path){
             case "displayName":
               if (item.validatorKey === "not_unique"){
@@ -76,11 +77,17 @@ $( document ).ready(function() {
           };
         });
       } else {
+        // set session storage value indicating user is logged in
         sessionStorage.setItem("id", result.id);
         sessionStorage.setItem("user", result.displayName);
         sessionStorage.setItem("email", data.email);
         sessionStorage.setItem("password", data.password);
+        // clear the sign up form and close the modal
+        $("#user-email").val("");
+        $("#user-pass").val("");
+        $("#user-name").val("");
         $("#signUp-Modal").modal("toggle");
+
         checkLogin();
       };
     }).fail(function(xhr, responseText, responseStatus){

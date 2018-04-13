@@ -5,5 +5,6 @@ exports.trail = {
 };
 
 exports.google = {
-  id: process.env.GOOGLE_ID
+  id: process.env.GOOGLE_ID,
+  air_id: process.env.GOOGLE_AIR_ID
 };

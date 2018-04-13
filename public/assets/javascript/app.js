@@ -42,7 +42,7 @@ $(document).ready(function() {
 
     $("#inlineFormInput").val("");
 
-    setTimeout(function(){ location.href= '#hikingDiv'; }, 500);
+    //setTimeout(function(){ location.href= '#hikingDiv'; }, 500);
    
   });
 
@@ -109,80 +109,72 @@ $(document).ready(function() {
         
         $("#hikingDiv").append(newDiv);
       }
+      $('html,body').animate({
+        scrollTop: $("#hikingDiv").offset().top
+      }, 'slow');
       console.log(currentSearchesArray);
     });
    
   };
 
-       function airportSearch(lat, lng){
-        googlePlacesSearch = {
-          apiKey: AIzaSyBk__NWtv6Kq1R5pKfscnW0t326OtvcBYc,
-          lng:"",
-          lon:""
-        }
-        
-  
-        var queryURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+googlePlacesSearch.lng + ","+ googlePlacesSearch.lon + "&radius=5000&types=airport&key=AIzaSyBk__NWtv6Kq1R5pKfscnW0t326OtvcBYc";
-    
-       $.ajax({
-           url: queryURL,
-           method: "GET",
-           async: true
-       }).done(function(response)
-       {
-         
-        //  searchLat = response.results[0].geometry.location.lat;
-        //  searchLon = response.results[0].geometry.location.lng;
-   
-        //  var formatLocation = {
-        //    lat:searchLat ,
-        //    lon: searchLon 
-        //  };
-         console.log(response.results[1].name);
-        
-        
-        });
-       }//airport search ends
- 
-       $(document).on("click",".trails",function(){
-          var thisIndex = $(this).attr("data-pullid");
-          var thisTrail = currentSearchesArray[thisIndex];
-          var trailIMG = thisTrail.imgSmallMed.replace(/\\\//g, "/");
+  function airportSearch(lat, lng){
+    googlePlacesSearch = {
+      latitude: lat,
+      longitude: lng
+    };
 
-          if(trailIMG == ""){
-            trailIMG =  "http://via.placeholder.com/340x250";
-          };
-          
-          $("#content-title").text(thisTrail.name);
-          $(".modal-body img").attr("src", trailIMG)
-                              .attr("data-actNum", $(this).attr("data-actNum"))
-                              .attr("data-actName", $(this).attr("data-actName"))
-                              .attr("data-actDiff", $(this).attr("data-actDiff"))
-                              .attr("data-actLength", $(this).attr("data-actLength"))
-                              .attr("data-actRating", $(this).attr("data-actRating"))
-                              .attr("data-actLat", $(this).attr("data-lat"))
-                              .attr("data-actLng", $(this).attr("data-lng"));
-          $(".modal-body p").empty();
-          $(".modal-body p").append("<p>"+thisTrail.location+"</p>");
-          $(".modal-body p").append("<p>Current Condition Details: " + thisTrail.conditionDetails + "</p>");
-          
-       })
- 
-       $(document).on("click","#bookTrip",function(){
-        // var thisIndex = $(this).attr("data-pullid");
-        // var thisTrail = currentSearchesArray[thisIndex];
-        // airportSearch();
-      
-        if ("geolocation" in navigator){ //check geolocation available 
-            //try to get user current location using getCurrentPosition() method
-            navigator.geolocation.getCurrentPosition(function(position){ 
-                    console.log("Found your location XX Lat : "+position.coords.latitude+" Lang :"+ position.coords.longitude);
-                });
-        }else{
-            console.log("Browser doesn't support geolocation!");
-        }
-    
+    $.get("/api/ex/airport", googlePlacesSearch, function(response){
+      //  searchLat = response.results[0].geometry.location.lat;
+      //  searchLon = response.results[0].geometry.location.lng;
+
+      //  var formatLocation = {
+      //    lat:searchLat ,
+      //    lon: searchLon 
+      //  };
+      console.log(response.results[1].name);
     });
+  }//airport search ends
+ 
+  // on click to open modal for more information on a specific trail
+  $(document).on("click",".trails",function(){
+    var thisIndex = $(this).attr("data-pullid");
+    var thisTrail = currentSearchesArray[thisIndex];
+    var trailIMG = thisTrail.imgSmallMed.replace(/\\\//g, "/");
+
+    if(trailIMG == ""){
+      trailIMG =  "http://via.placeholder.com/340x250";
+    };
+    
+    $("#content-title").text(thisTrail.name);
+    $(".modal-body img").attr("src", trailIMG)
+                        .attr("data-actNum", $(this).attr("data-actNum"))
+                        .attr("data-actName", $(this).attr("data-actName"))
+                        .attr("data-actDiff", $(this).attr("data-actDiff"))
+                        .attr("data-actLength", $(this).attr("data-actLength"))
+                        .attr("data-actRating", $(this).attr("data-actRating"))
+                        .attr("data-actLat", $(this).attr("data-lat"))
+                        .attr("data-actLng", $(this).attr("data-lng"));
+    $(".modal-body p").empty();
+    $(".modal-body p").append(thisTrail.location+"</br>");
+    $(".modal-body p").append("Current Condition Details: " + thisTrail.conditionDetails);
+    
+  });
+ 
+  $(document).on("click","#bookTrip",function(){
+    // var thisIndex = $(this).attr("data-pullid");
+    // var thisTrail = currentSearchesArray[thisIndex];
+    // airportSearch();
+
+    if ("geolocation" in navigator){ //check geolocation available 
+        //try to get user current location using getCurrentPosition() method
+        navigator.geolocation.getCurrentPosition(function(position){ 
+                console.log("Found your location XX Lat : "+position.coords.latitude+" Lang :"+ position.coords.longitude);
+            });
+    }else{
+        console.log("Browser doesn't support geolocation!");
+    }
+
+  });
        
  
  });//jQuery ends

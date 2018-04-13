@@ -40,6 +40,12 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         isDecimal: true
       }
+    },
+    imgUrl: {
+      type: DataTypes.STRING,
+      validate: {
+        isUrl: true
+      }
     }
   });
 

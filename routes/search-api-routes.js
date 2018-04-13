@@ -25,6 +25,8 @@ module.exports = function(app) {
       include: [db.Activity]
     }).then(function(dbSearch) {
       res.json(dbSearch);
+    }).catch(function(err){
+      res.send(err);
     });
   });
 

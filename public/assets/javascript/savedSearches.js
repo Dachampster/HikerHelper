@@ -21,34 +21,55 @@ $(document).ready(function(){
     $.get("/api/ex/address", data, function(response){
       var address = response.results[2].formatted_address;
       var listItem = $("<li>");
-      var listItemSpan = $("<span>");
-      listItemSpan.attr("data-lat", data.latitude)
-                  .attr("data-lng", data.longitude)
-                  .text(address);
+      listItem.attr("data-lat", data.latitude)
+              .attr("data-lng", data.longitude)
+              .text(address + " ");
       var delSearchBttn = $("<button>");
       delSearchBttn.attr("class", "btn btn-primary del")
                    .attr("data-id", data.id)
                    .attr("data-type", "search")
                    .text("Delete Search");
-      listItem.append(listItemSpan, delSearchBttn);
+      listItem.append(delSearchBttn);
       var subList;
-      var subListItem;
       var delActBttn;
-      var subListSpan;
+      var actDiv;
+      var actImg;
+      var actH;
+      var actP;
+      var rateSpan;
       if (data.Activities.length > 0){
-        subList = $("<ul>");
+        subList = $("<li>");
+        subList.attr("class", "saves");
         data.Activities.forEach(function(item){
-          subListItem = $("<li>");
-          subListSpan = $("<span>");
-          subListSpan.attr("data-activity", item.activityNum)
-                     .text(item.name);
+          actDiv = $("<div>");
+          actDiv.attr("class", "trails")
+                .attr("data-actNum", item.activityNum)
+                .attr("data-actName", item.name)
+                .attr("data-actDiff", item.difficulty)
+                .attr("data-actLength", item.length)
+                .attr("data-actRating", item.rating)
+                .attr("data-lat", item.lat)
+                .attr("data-lng", item.lng);
+          actImg = $("<img>");
+          actImg.attr("src", item.imgUrl);
+          actH = $("<h5>");
+          actH.text(item.name);
+          rateSpan = $("<span>");
+          rateSpan.rateYo({
+            rating: item.rating,
+            readOnly: true,
+            starWidth: "12px"
+          });
+          actP = $("<p>");
+          actP.text(`Difficulty: ${item.difficulty}`);
+          actP.append(rateSpan);
           delActBttn = $("<button>");
           delActBttn.attr("class", "btn btn-sm btn-primary del")
                     .attr("data-id", item.id)
                     .attr("data-type", "activity")
                     .text("Delete Activity");
-          subListItem.append(subListSpan, delActBttn);
-          subList.append(subListItem);
+          actDiv.append(actH, actImg, actP, delActBttn);
+          subList.append(actDiv);
         });
         listItem.append(subList);
       };
@@ -75,6 +96,7 @@ $(document).ready(function(){
     var actRating = parseFloat($(".modal-body img").attr("data-actRating"));
     var actLat = parseFloat($(".modal-body img").attr("data-actLat"));
     var actLng = parseFloat($(".modal-body img").attr("data-actLng"));
+    var actImgUrl = $(".modal-body img").attr("src");
 
     // create the search information object
     var searchInfo = {
@@ -93,7 +115,8 @@ $(document).ready(function(){
       length: actLength,
       rating: actRating,
       lat: actLat,
-      lng: actLng
+      lng: actLng,
+      imgUrl: actImgUrl
     };
 
     // get route to check if the search has already been saved
@@ -151,7 +174,13 @@ $(document).ready(function(){
       url: url,
       data: delId
     }).done(function(result){
-      getSaves();
+      var userEmail = sessionStorage.getItem("email");
+      var userPass = sessionStorage.getItem("password");
+      var authInfo = {
+        email: userEmail,
+        password: userPass
+      };
+      getSaves(authInfo);
     }).fail(function(xhr, responseText, responseStatus){
       if(xhr){
         console.log(xhr.responseText);
@@ -179,6 +208,9 @@ $(document).ready(function(){
       password: userPass
     };
     getSaves(authInfo);
+    $('html,body').animate({
+      scrollTop: $("#hikingDiv").offset().top
+    }, 'slow');
   });
 
 });

@@ -77,6 +77,38 @@ right: 3%;
 .imagesCarousel{
    height: 86vh;
    opacity: 1;
+   
+}
+#firstSlide,#secondSlide,#thirdSlide{
+    background-attachment: fixed;
+    background-size: 100%;
+
+}   
+#firstSlide{
+    background-image: url("../../assets/images/Artboard 1@3x.png");
+    /* https://demo.tagdiv.com/newsmag/wp-content/uploads/2014/08/70.jpg */
+    /* ../../assets/images/backpack-clouds-cloudy-sky-771079.jpg */
+    background-size: 100%;
+
+}
+#secondSlide{
+background-image: url("../../assets/images/action-adult-adventure-701016.jpg");
+background-size: 100%;
+}
+#thirdSlide{
+    background-image: url("../../assets/images/accomplishment-adult-adventure-372098.jpg");
+    background-size: 100%;
+}
+
+#fourthSlide{
+    background-image: url("../../assets/images/backpack-clouds-cloudy-sky-771079.jpg");
+    background-size: 100%;
+}
+
+#fifthSlide{
+    background-image: url("../../assets/images/adventure-calm-clouds-414171.jpg");
+    background-size: 100%;
+
 }
 
 .footer{
@@ -93,7 +125,7 @@ right: 3%;
 }
 
 #hikingDiv{   
-     margin: 30px 30px 95px 30px;
+    margin: 30px 30px 95px 30px;
     padding-left: 3%;
     padding-right: 3%;
     
@@ -115,6 +147,7 @@ right: 3%;
     cursor: pointer;
     background-color: white;
     text-align: center;
+    margin: 0px 30px 75px 30px;
 }
 
 .trails:hover{
@@ -131,6 +164,15 @@ right: 3%;
     border: 5px;
     border-color: #da5d34;
     border-style: solid;
+}
+
+.saves {
+    list-style-type: none;
+}
+
+.jq-ry-container {
+    float: right;
+    margin-top: 5px;
 }
 
 /* Sign In/Up Section  */

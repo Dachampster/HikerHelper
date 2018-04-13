@@ -13,9 +13,12 @@ module.exports = function(app) {
       rating: req.body.rating,
       lat: req.body.lat,
       lng: req.body.lng,
+      imgUrl: req.body.imgUrl,
       SearchParamId: req.body.SearchParamId
     }).then(function(dbActivity) {
       res.json(dbActivity);
+    }).catch(function(err){
+      res.send(err);
     });
   });
 
