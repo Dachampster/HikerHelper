@@ -132,6 +132,10 @@ background-size: 100%;
     
 }
 
+h5 {
+    font-size: 1.2rem;
+}
+
 .trails{
     width: 275px;
     height: 325px;

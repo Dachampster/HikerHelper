@@ -30,17 +30,25 @@ $(document).ready(function () {
       searchRadius = 30;
     };
 
-    // create object containing search information
-    var searchInfo = {
-      address: address,
-      searchLength: searchLength,
-      searchRadius: searchRadius
+    if (address){
+      // create object containing search information
+      var searchInfo = {
+        address: address,
+        searchLength: searchLength,
+        searchRadius: searchRadius
+      };
+
+      // call function to get the trails based on the serach information entered
+      findNewTrails(searchInfo);
+
+      // reset form values
+      $("#inlineFormInput").val("");
+      $("#search-max-dist").val("");
+      $("#search-min-lng").val("");
+
+    } else {
+      $("#inlineFormInput").addClass("is-invalid");
     };
-
-    // call function to get the trails based on the serach information entered
-    findNewTrails(searchInfo);
-
-    $("#inlineFormInput").val("");
 
     //setTimeout(function(){ location.href= '#hikingDiv'; }, 500);
 
@@ -64,7 +72,11 @@ $(document).ready(function () {
 
       var pullID = 0;
       if (response.trails.length == 0) {
-       alert("No trails found");
+        $("#no-trails").modal("show");
+      } else {
+        $('html,body').animate({
+          scrollTop: $("#hikingDiv").offset().top
+        }, 'slow');
       };
 
       var trailInfo = {};
@@ -101,17 +113,22 @@ $(document).ready(function () {
         newH.append(trailInfo.name);
         newP.append(trailInfo.location);
 
+        var rateSpan = $("<span>");
+        rateSpan.rateYo({
+          rating: trailInfo.stars,
+          readOnly: true,
+          starWidth: "12px"
+        });
+
         // need to append to the div in html
         newDiv.append(newH);
         newDiv.append(newP);
         newDiv.append(newIMG);
+        newDiv.append(rateSpan);
         newDiv.addClass("trails");
 
         $("#hikingDiv").append(newDiv);
       }
-      $('html,body').animate({
-        scrollTop: $("#hikingDiv").offset().top
-      }, 'slow');
       console.log(currentSearchesArray);
     });
 
@@ -146,7 +163,7 @@ $(document).ready(function () {
     };
 
     $("#content-title").text(thisTrail.name);
-    $(".modal-body img").attr("src", trailIMG)
+    $("#moreInfo-Body img").attr("src", trailIMG)
       .attr("data-actNum", $(this).attr("data-actNum"))
       .attr("data-actName", $(this).attr("data-actName"))
       .attr("data-actDiff", $(this).attr("data-actDiff"))
@@ -154,8 +171,8 @@ $(document).ready(function () {
       .attr("data-actRating", $(this).attr("data-actRating"))
       .attr("data-actLat", $(this).attr("data-lat"))
       .attr("data-actLng", $(this).attr("data-lng"));
-    $(".modal-body p").empty();
-    $(".modal-body p").append(thisTrail.location + "</br>");
+    $("#moreInfo-Body p").empty();
+    $("#moreInfo-Body p").append(thisTrail.location + "</br>");
     var hikeDiff = { green: "Easy", greenBlue: "Kinda Easy", blue: "Intermediate", blueBlack: "Kinda Hard", black: "Hard", dblack: "Very Hard" };
     var hikeTips =
       ["Pay attention to signs and trail markers, as well as any park rules.",
@@ -185,10 +202,11 @@ $(document).ready(function () {
       ];
     var randomtip = Math.floor(Math.random()*hikeTips.length);
     var difficulty = hikeDiff[thisTrail.difficulty];
-    $(".modal-body p").append("Difficulty: " + difficulty + "<br>");
-    if(thisTrail.conditionDetails){ $(".modal-body p").append("Current Condition Details: " + thisTrail.conditionDetails + "<br>");}
-    $(".modal-body p").append("Hiking Tip: " + hikeTips[randomtip]);
-
+    $("#moreInfo-Body p").append("Difficulty: " + difficulty + "<br>");
+    if(thisTrail.conditionDetails){
+      $("#moreInfo-Body p").append("Current Condition Details: " + thisTrail.conditionDetails + "<br>");
+    };
+    $("#moreInfo-Body p").append("Hiking Tip: " + hikeTips[randomtip]);
 
   });
 
@@ -208,5 +226,8 @@ $(document).ready(function () {
 
   });
 
+  $("#inlineFormInput").focus(function(){
+    $("#inlineFormInput").removeClass("is-invalid");
+  });
 
 });//jQuery ends
