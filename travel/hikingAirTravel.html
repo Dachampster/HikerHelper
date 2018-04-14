@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>Hiking Destination - Air Travel - Formoid jquery form</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	 crossorigin="anonymous"></script>
+	<!-- Form Script -->
+	<script src="travelParams.js"></script>
+</head>
+
+<body class="blurBg-true" style="background-color:#EBEBEB">
+
+
+
+	<!-- Start Formoid form-->
+	<link rel="stylesheet" href="hikingairtravel_files/formoid1/formoid-solid-blue.css" type="text/css" />
+	<script type="text/javascript" src="hikingairtravel_files/formoid1/jquery.min.js"></script>
+	<form class="formoid-solid-blue" style="background-color:#FFFFFF;font-size:14px;font-family:'Roboto',Arial,Helvetica,sans-serif;color:#34495E;max-width:480px;min-width:150px"
+	 method="post">
+		<div class="title">
+			<h2>Hiking Destination - Air Travel</h2>
+		</div>
+		<div class="element-input" id="origin-code" title="Enter Origin Airport Code">
+			<label class="title">
+				<span class="required">*</span>
+			</label>
+			<div class="item-cont">
+				<!-- Origin Code input -->
+				<input class="large" type="text" name="input3" required="required" placeholder="Origin" />
+				<span class="icon-place"></span>
+			</div>
+		</div>
+		<div class="element-input" title="Enter Destination Airport Code">
+			<label class="title">
+				<span class="required">*</span>
+			</label>
+			<div class="item-cont">
+				<input class="large" type="text" name="input" required="required" placeholder="Destination" />
+				<span class="icon-place"></span>
+			</div>
+		</div>
+		<div class="element-date">
+			<label class="title">
+				<span class="required">*</span>
+			</label>
+			<div class="item-cont">
+				<input class="large" data-format="yyyy-mm-dd" type="date" name="date" required="required" placeholder="Departure Date" />
+				<span class="icon-place"></span>
+			</div>
+		</div>
+		<div class="element-date" title="Enter Date">
+			<label class="title">
+				<span class="required">*</span>
+			</label>
+			<div class="item-cont">
+				<input class="large" data-format="yyyy-mm-dd" type="date" name="date1" required="required" placeholder="Return Date" />
+				<span class="icon-place"></span>
+			</div>
+		</div>
+		<div class="element-number" title="Enter Max result #">
+			<label class="title"></label>
+			<div class="item-cont">
+				<input class="large" type="text" min="1" max="10" name="number" placeholder="Number of results" value="" />
+				<span class="icon-place"></span>
+			</div>
+		</div>
+		<div class="submit">
+			<input id="travel_button" type="submit" value="Submit" />
+		</div>
+	</form>
+	<p class="frmd">
+		<a href="http://formoid.com/v29.php">jquery form</a> Formoid.com 2.9</p>
+	<script type="text/javascript" src="hikingairtravel_files/formoid1/formoid-solid-blue.js"></script>
+	<!-- Stop Formoid form-->
+
+
+
+</body>
+
+</html>
