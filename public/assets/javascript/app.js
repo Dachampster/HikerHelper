@@ -64,7 +64,7 @@ $(document).ready(function () {
 
       var pullID = 0;
       if (response.trails.length == 0) {
-        console.log("No trails found");
+       alert("No trails found");
       };
 
       var trailInfo = {};
