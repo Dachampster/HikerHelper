@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha --compilers js:babel-register",
     "test:watch": "npm test -- --watch",
-    "start": "babel-node bin/www"
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
