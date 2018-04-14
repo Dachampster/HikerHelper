@@ -1,0 +1,22 @@
+{
+  "name": "sacs_nodejs",
+  "version": "1.0.0",
+  "description": "Sabre API Code Samples in NodeJS",
+  "main": "main.js",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "datejs": "^0.0.2",
+    "express": "^4.13.4",
+    "node-rest-client": "^1.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js"
+  },
+  "keywords": [
+    "SACS",
+    "NodeJS"
+  ],
+  "author": ""
+}

@@ -1,0 +1,393 @@
+{
+  "PricedItineraries": [
+    {
+      "AirItinerary": {
+        "OriginDestinationOptions": {
+          "OriginDestinationOption": [
+            {
+              "FlightSegment": [
+                {
+                  "DepartureAirport": {
+                    "LocationCode": "CLT"
+                  },
+                  "ArrivalAirport": {
+                    "LocationCode": "ATL"
+                  },
+                  "MarketingAirline": {
+                    "Code": "DL"
+                  },
+                  "ArrivalTimeZone": {
+                    "GMTOffset": -4
+                  },
+                  "TPA_Extensions": {
+                    "eTicket": {
+                      "Ind": true
+                    }
+                  },
+                  "StopQuantity": 0,
+                  "ElapsedTime": 65,
+                  "ResBookDesigCode": "E",
+                  "MarriageGrp": "O",
+                  "Equipment": {
+                    "AirEquipType": "M88"
+                  },
+                  "DepartureDateTime": "2018-07-07T06:00:00",
+                  "ArrivalDateTime": "2018-07-07T07:05:00",
+                  "FlightNumber": 823,
+                  "OnTimePerformance": {
+                    "Level": 9
+                  },
+                  "OperatingAirline": {
+                    "FlightNumber": 823,
+                    "Code": "DL"
+                  },
+                  "DepartureTimeZone": {
+                    "GMTOffset": -4
+                  }
+                },
+                {
+                  "DepartureAirport": {
+                    "LocationCode": "ATL"
+                  },
+                  "ArrivalAirport": {
+                    "LocationCode": "TPA"
+                  },
+                  "MarketingAirline": {
+                    "Code": "DL"
+                  },
+                  "ArrivalTimeZone": {
+                    "GMTOffset": -4
+                  },
+                  "TPA_Extensions": {
+                    "eTicket": {
+                      "Ind": true
+                    }
+                  },
+                  "StopQuantity": 0,
+                  "ElapsedTime": 87,
+                  "ResBookDesigCode": "E",
+                  "MarriageGrp": "I",
+                  "Equipment": {
+                    "AirEquipType": "M88"
+                  },
+                  "DepartureDateTime": "2018-07-07T11:00:00",
+                  "ArrivalDateTime": "2018-07-07T12:27:00",
+                  "FlightNumber": 2091,
+                  "OnTimePerformance": {
+                    "Level": 9
+                  },
+                  "OperatingAirline": {
+                    "FlightNumber": 2091,
+                    "Code": "DL"
+                  },
+                  "DepartureTimeZone": {
+                    "GMTOffset": -4
+                  }
+                }
+              ],
+              "ElapsedTime": 387
+            },
+            {
+              "FlightSegment": [
+                {
+                  "DepartureAirport": {
+                    "LocationCode": "TPA"
+                  },
+                  "ArrivalAirport": {
+                    "LocationCode": "ATL"
+                  },
+                  "MarketingAirline": {
+                    "Code": "DL"
+                  },
+                  "ArrivalTimeZone": {
+                    "GMTOffset": -4
+                  },
+                  "TPA_Extensions": {
+                    "eTicket": {
+                      "Ind": true
+                    }
+                  },
+                  "StopQuantity": 0,
+                  "ElapsedTime": 89,
+                  "ResBookDesigCode": "E",
+                  "MarriageGrp": "O",
+                  "Equipment": {
+                    "AirEquipType": 757
+                  },
+                  "DepartureDateTime": "2018-07-09T09:45:00",
+                  "ArrivalDateTime": "2018-07-09T11:14:00",
+                  "FlightNumber": 1572,
+                  "OnTimePerformance": {
+                    "Level": 9
+                  },
+                  "OperatingAirline": {
+                    "FlightNumber": 1572,
+                    "Code": "DL"
+                  },
+                  "DepartureTimeZone": {
+                    "GMTOffset": -4
+                  }
+                },
+                {
+                  "DepartureAirport": {
+                    "LocationCode": "ATL"
+                  },
+                  "ArrivalAirport": {
+                    "LocationCode": "CLT"
+                  },
+                  "MarketingAirline": {
+                    "Code": "DL"
+                  },
+                  "ArrivalTimeZone": {
+                    "GMTOffset": -4
+                  },
+                  "TPA_Extensions": {
+                    "eTicket": {
+                      "Ind": true
+                    }
+                  },
+                  "StopQuantity": 0,
+                  "ElapsedTime": 81,
+                  "ResBookDesigCode": "E",
+                  "MarriageGrp": "I",
+                  "Equipment": {
+                    "AirEquipType": "M88"
+                  },
+                  "DepartureDateTime": "2018-07-09T12:30:00",
+                  "ArrivalDateTime": "2018-07-09T13:51:00",
+                  "FlightNumber": 2597,
+                  "OnTimePerformance": {
+                    "Level": 9
+                  },
+                  "OperatingAirline": {
+                    "FlightNumber": 2597,
+                    "Code": "DL"
+                  },
+                  "DepartureTimeZone": {
+                    "GMTOffset": -4
+                  }
+                }
+              ],
+              "ElapsedTime": 246
+            }
+          ]
+        },
+        "DirectionInd": "Return"
+      },
+      "TPA_Extensions": {
+        "ValidatingCarrier": {
+          "Code": "DL"
+        }
+      },
+      "SequenceNumber": 1,
+      "AirItineraryPricingInfo": {
+        "PTC_FareBreakdowns": {
+          "PTC_FareBreakdown": {
+            "FareBasisCodes": {
+              "FareBasisCode": [
+                {
+                  "BookingCode": "E",
+                  "DepartureAirportCode": "CLT",
+                  "ArrivalAirportCode": "ATL",
+                  "content": "XA0NA0BA"
+                },
+                {
+                  "BookingCode": "E",
+                  "DepartureAirportCode": "ATL",
+                  "AvailabilityBreak": true,
+                  "ArrivalAirportCode": "TPA",
+                  "content": "XA0NA0BA"
+                },
+                {
+                  "BookingCode": "E",
+                  "DepartureAirportCode": "TPA",
+                  "ArrivalAirportCode": "ATL",
+                  "content": "XA0NA0BA"
+                },
+                {
+                  "BookingCode": "E",
+                  "DepartureAirportCode": "ATL",
+                  "AvailabilityBreak": true,
+                  "ArrivalAirportCode": "CLT",
+                  "content": "XA0NA0BA"
+                }
+              ]
+            },
+            "PassengerTypeQuantity": {
+              "Quantity": 1,
+              "Code": "ADT"
+            },
+            "PassengerFare": {
+              "FareConstruction": {
+                "CurrencyCode": "USD",
+                "DecimalPlaces": 2,
+                "Amount": "221.40"
+              },
+              "TotalFare": {
+                "CurrencyCode": "USD",
+                "Amount": 282.11
+              },
+              "Taxes": {
+                "TotalTax": {
+                  "CurrencyCode": "USD",
+                  "DecimalPlaces": 2,
+                  "Amount": 60.71
+                },
+                "Tax": [
+                  {
+                    "CurrencyCode": "USD",
+                    "DecimalPlaces": 1,
+                    "TaxCode": "XF",
+                    "Amount": 16.5
+                  },
+                  {
+                    "CurrencyCode": "USD",
+                    "DecimalPlaces": 1,
+                    "TaxCode": "ZP",
+                    "Amount": 16.4
+                  },
+                  {
+                    "CurrencyCode": "USD",
+                    "DecimalPlaces": 1,
+                    "TaxCode": "AY",
+                    "Amount": 11.2
+                  },
+                  {
+                    "CurrencyCode": "USD",
+                    "DecimalPlaces": 2,
+                    "TaxCode": "US1",
+                    "Amount": 16.61
+                  }
+                ]
+              },
+              "BaseFare": {
+                "CurrencyCode": "USD",
+                "Amount": "221.40"
+              },
+              "EquivFare": {
+                "CurrencyCode": "USD",
+                "DecimalPlaces": 2,
+                "Amount": "221.40"
+              }
+            },
+            "Endorsements": {
+              "NonRefundableIndicator": true
+            }
+          }
+        },
+        "FareInfos": {
+          "FareInfo": [
+            {
+              "TPA_Extensions": {
+                "Cabin": {
+                  "Cabin": "Y"
+                },
+                "SeatsRemaining": {
+                  "BelowMin": false,
+                  "Number": 4
+                }
+              },
+              "FareReference": "E"
+            },
+            {
+              "TPA_Extensions": {
+                "Cabin": {
+                  "Cabin": "Y"
+                },
+                "SeatsRemaining": {
+                  "BelowMin": false,
+                  "Number": 4
+                }
+              },
+              "FareReference": "E"
+            },
+            {
+              "TPA_Extensions": {
+                "Cabin": {
+                  "Cabin": "Y"
+                },
+                "SeatsRemaining": {
+                  "BelowMin": false,
+                  "Number": 4
+                }
+              },
+              "FareReference": "E"
+            },
+            {
+              "TPA_Extensions": {
+                "Cabin": {
+                  "Cabin": "Y"
+                },
+                "SeatsRemaining": {
+                  "BelowMin": false,
+                  "Number": 4
+                }
+              },
+              "FareReference": "E"
+            }
+          ]
+        },
+        "TPA_Extensions": {
+          "DivideInParty": {
+            "Indicator": false
+          }
+        },
+        "ItinTotalFare": {
+          "FareConstruction": {
+            "CurrencyCode": "USD",
+            "DecimalPlaces": 2,
+            "Amount": "221.40"
+          },
+          "TotalFare": {
+            "CurrencyCode": "USD",
+            "DecimalPlaces": 2,
+            "Amount": 282.11
+          },
+          "Taxes": {
+            "Tax": [
+              {
+                "CurrencyCode": "USD",
+                "DecimalPlaces": 2,
+                "TaxCode": "TOTALTAX",
+                "Amount": 60.71
+              }
+            ]
+          },
+          "BaseFare": {
+            "CurrencyCode": "USD",
+            "DecimalPlaces": 2,
+            "Amount": "221.40"
+          },
+          "EquivFare": {
+            "CurrencyCode": "USD",
+            "DecimalPlaces": 2,
+            "Amount": "221.40"
+          }
+        }
+      },
+      "TicketingInfo": {
+        "ValidInterline": "Yes",
+        "TicketType": "eTicket"
+      }
+    }
+  ],
+  "ReturnDateTime": "2018-07-09",
+  "DepartureDateTime": "2018-07-07",
+  "DestinationLocation": "TPA",
+  "OriginLocation": "CLT",
+  "Page": {
+    "Size": 1,
+    "TotalTags": 0,
+    "Offset": 1
+  },
+  "Links": [
+    {
+      "rel": "self",
+      "href": "https://api.test.sabre.com/v1/shop/flights?origin=CLT&destination=TPA&departuredate=2018-07-07&returndate=2018-07-09&limit=1"
+    },
+    {
+      "rel": "linkTemplate",
+      "href": "https://api.test.sabre.com/v1/shop/flights?origin=<origin>&destination=<destination>&departuredate=<departuredate>&returndate=<returndate>&offset=<offset>&limit=<limit>&sortby=<sortby>&order=<order>&sortby2=<sortby2>&order2=<order2>&minfare=<minfare>&maxfare=<maxfare>&includedcarriers=<includedcarriers>&excludedcarriers=<excludedcarriers>&outboundflightstops=<outboundflightstops>&inboundflightstops=<inboundflightstops>&outboundstopduration=<outboundstopduration>&inboundstopduration=<inboundstopduration>&outbounddeparturewindow=<outbounddeparturewindow>&outboundarrivalwindow=<outboundarrivalwindow>&inbounddeparturewindow=<inbounddeparturewindow>&inboundarrivalwindow=<inboundarrivalwindow>&onlineitinerariesonly=<onlineitinerariesonly>&eticketsonly=<eticketsonly>&includedconnectpoints=<includedconnectpoints>&excludedconnectpoints=<excludedconnectpoints>&pointofsalecountry=<pointofsalecountry>&passengercount=<passengercount>&enabletagging=<enabletagging>"
+    }
+  ]
+}
