@@ -9,7 +9,7 @@ $(document).ready(function () {
   var currentSearchesArray = [];
 
   // click to submit the search request
-  $("#searchButton").on("click", function () {
+  $("#searchButton").on("click", function (event) {
     event.preventDefault();
 
     // clear any previously submitted searches
